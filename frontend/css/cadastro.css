@@ -22,24 +22,24 @@ body {
 }
 
 /* Estilos para o lado direito do container */
-.lado-direito {
-    display: flex; /* Usa flexbox para o lado direito */
+.lado-esquerdo {
+    display: flex; /* Usa flexbox para o lado esq.lado-esquerdo */
     flex-direction: column; /* Coloca os itens em coluna (empilhando-os verticalmente) */
     align-items: center; /* Centraliza os itens horizontalmente */
-    background-color: #56008C; /* Define a cor de fundo do lado direito como roxo */
+    background-color: #56008C; /* Define a cor de fundo do lado esq.lado-esquerdo como roxo */
     padding: 20px; /* Adiciona um padding interno de 20px */
-    width: 35%; /* Define a largura do lado direito como 35% do container */
+    width: 35%; /* Define a largura do lado esq.lado-esquerdo como 35% do container */
 }
 
-/* Estilo específico para o título (h1) dentro do lado-direito */
-.lado-direito h1 {
+/* Estilo específico para o título (h1) dentro do lado-esq.lado-esquerdo */
+.lado-esquerdo h1 {
     color: white; /* Define a cor do texto como branca */
     margin-bottom: 10px; /* Adiciona um espaço abaixo do título */
     font-size: 24px; /* Define o tamanho da fonte */
 }
 
-/* Estilos para a imagem dentro do lado-direito */
-.lado-direito img {
+/* Estilos para a imagem dentro do lado-esq.lado-esquerdo */
+.lado-esquerdo img {
     width: 80px; /* Define a largura da imagem */
     height: 80px; /* Define a altura da imagem */
     border-radius: 50%; /* Torna a imagem circular */
@@ -47,30 +47,40 @@ body {
 }
 
 /* Estilos para o lado esquerdo do container */
-.lado-esquerdo {
-    display: flex; /* Usa flexbox para o lado esquerdo */
+.lado-direito {
+    display: flex; /* Usa flexbox para o lado direito */
     flex-direction: column; /* Coloca os itens em coluna */
-    justify-content: center; /* Centraliza os itens verticalmente no lado esquerdo */
-    padding: 20px; /* Adiciona padding de 20px ao lado esquerdo */
-    width: 65%; /* Define a largura do lado esquerdo como 65% do container */
+    justify-content: center; /* Centraliza os itens verticalmente no lado direito */
+    padding: 20px; /* Adiciona padding de 20px ao lado direito */
+    width: 65%; /* Define a largura do lado direito como 65% do container */
 }
 
-/* Estilo específico para o título (h1) dentro do lado-esquerdo */
-.lado-esquerdo h1 {
-    font-size: 20px; /* Define o tamanho da fonte do título */
-    margin-bottom: 20px; /* Adiciona um espaço abaixo do título */
+/* Estilo específico para o título (h1) dentro do lado-direito */
+.lado-direito h1 {
+    font-size: 27px; /* Define o tamanho da fonte do título */
+    margin-bottom: 2px; /* Adiciona um espaço abaixo do título */
     color: #000000; /* Define a cor do texto como preta */
 }
 
-/* Estilos para o formulário dentro do lado-esquerdo */
-.lado-esquerdo form {
+/* Estilo específico para o subtítulo (h2) dentro do lado-direito */
+.lado-direito h2 {
+    color: black; /* Define a cor do texto como preta */
+    font-size: 16px; /* Define um tamanho um pouco menor para o subtítulo */
+    margin-bottom: 20px; /* Adiciona um espaço abaixo do subtítulo */
+    font-weight: 400; /* Deixa o subtítulo mais leve */
+    letter-spacing: 0.5px; /* Espaçamento suave entre as letras */
+}
+
+
+/* Estilos para o formulário dentro do lado-direito */
+.lado-direito form {
     display: flex; /* Usa flexbox para o formulário */
     flex-direction: column; /* Coloca os itens do formulário em coluna */
     gap: 15px; /* Define um espaço de 15px entre os inputs */
 }
 
-/* Estilos para os inputs e o botão dentro do lado-esquerdo */
-.lado-esquerdo input, .lado-esquerdo button {
+/* Estilos para os inputs e o botão dentro do lado-direito */
+.lado-direito input, .lado-direito button {
     padding: 10px; /* Adiciona um padding de 10px dentro dos campos */
     font-size: 16px; /* Define o tamanho da fonte dentro dos inputs e do botão */
     border-radius: 8px; /* Arredonda as bordas dos inputs e do botão */
@@ -79,8 +89,15 @@ body {
     box-sizing: border-box; /* Inclui o padding e a borda nas dimensões totais do elemento */
 }
 
-/* Estilos específicos para o botão dentro do lado-esquerdo */
-.lado-esquerdo button {
+/* Estilos específicos para o botão dentro do lado-direito */
+.lado-direito button {
     background-color: #56008C; /* Define a cor de fundo do botão como roxo */
-    color: white; /* Define a cor do texto do botão como branca */
+    color: #fff; /* Mantém a cor branca mais forte para o texto */
+    font-weight: 550; /* Torna a fonte mais grossa */
+    font-size: 16px; /* Tamanho da fonte (caso queira ajustar ainda mais) */
+    padding: 10px; /* Adiciona um padding de 10px dentro do botão */
+    border-radius: 8px; /* Arredonda as bordas do botão */
+    border: 1px solid #ddd; /* Adiciona uma borda leve ao redor do botão */
+    width: 100%; /* Faz o botão ocupar toda a largura disponível */
+    box-sizing: border-box; /* Inclui o padding e a borda nas dimensões totais do elemento */
 }
