@@ -40,8 +40,8 @@ body {
 
 /* Estilos para a imagem dentro do lado-esq.lado-esquerdo */
 .lado-esquerdo img {
-    width: 80px; /* Define a largura da imagem */
-    height: 80px; /* Define a altura da imagem */
+    width: 110px; /* Define a largura da imagem */
+    height: 110px; /* Define a altura da imagem */
     border-radius: 50%; /* Torna a imagem circular */
     object-fit: cover; /* Ajusta a imagem para preencher o círculo sem distorcer */
 }
