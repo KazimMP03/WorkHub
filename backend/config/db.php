@@ -1,19 +1,35 @@
 <?php
-// Variáveis para configurar o Banco de Dados(DB)
-$host = "localhost"; // Endereço do servidor(localhost está rodando na mesma máquina)
-$port = "5432"; // Porta do DB(o padrão é 5432)
-$dbname = "nicejobs"; // Nome do BD que será acessado
-$user = "postgres"; // Nome do usuário do BD
-$password = "123"; // Senha do BD
+// Configurações do Banco de Dados
+class BancoDeDados {
+    private $pdo;
 
-// Tenta acessar o BD usando o $pdo(PHP Data Objects)
-try {
-    // Criando uma nova instância $pdo com as configurações
-    $pdo = new PDO("pgsql:host=$host;port=$port;dbname=$dbname", $user, $password);
-    // Configura o $pdo para lançar exceções em caso de erro
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    // Se houver um erro ao conectar, exibe uma mensagem e encerra a execução 
-    die("Erro ao conectar ao banco de dados: " . $e->getMessage());
+    // Método construtor para inicializar a conexão
+    public function __construct($host, $port, $dbname, $user, $password) {
+        try {
+            // Tenta criar uma conexão com o Banco de Dados usando PDO(PHP Data Objects)
+            $this->pdo = new PDO("pgsql:host=$host;port=$port;dbname=$dbname", $user, $password);
+            // Configura para lançar exceções em caso de erro
+            $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        } catch (PDOException $e) {
+            // Se houver erro, exibe a mensagem e encerra a execução
+            die("Erro ao conectar ao banco de dados: " . $e->getMessage());
+        }
+    }
+
+    // Método para obter a instância do PDO (conexão com o banco)
+    public function getPDO() {
+        return $this->pdo;
+    }
 }
+
+// Configurações do Banco de Dados
+$host = "localhost"; // Endereço do servidor(nesse caso, localhost)
+$port = "5432"; // Porta(o padrão do PostgreSQL é 5432)
+$dbname = "nicejobs"; // Nome do Banco de Dados
+$user = "postgres"; // Nome do usuário
+$password = "123"; // Senha 
+
+// Cria uma nova instância da classe BancoDeDados
+$db = new BancoDeDados($host, $port, $dbname, $user, $password);
+$pdo = $db->getPDO(); // Obtém a instância PDO para ser usada em outros arquivos
 ?>
