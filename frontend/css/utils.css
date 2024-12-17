@@ -44,6 +44,7 @@ body {
     height: 110px; /* Define a altura da imagem */
     border-radius: 50%; /* Torna a imagem circular */
     object-fit: cover; /* Ajusta a imagem para preencher o círculo sem distorcer */
+    margin-top: 30%;
 }
 
 /* Estilos para o lado esquerdo do container */
