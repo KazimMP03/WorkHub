@@ -80,7 +80,7 @@ body {
 }
 
 /* Estilos para os inputs e o botão dentro do lado-direito */
-.lado-direito input, .lado-direito button {
+.lado-direito input, .lado-direito button, .lado-direito select {
     padding: 10px; /* Adiciona um padding de 10px dentro dos campos */
     font-size: 16px; /* Define o tamanho da fonte dentro dos inputs e do botão */
     border-radius: 8px; /* Arredonda as bordas dos inputs e do botão */
