@@ -101,3 +101,8 @@ body {
     width: 100%; /* Faz o botão ocupar toda a largura disponível */
     box-sizing: border-box; /* Inclui o padding e a borda nas dimensões totais do elemento */
 }
+
+.lado-direito button:hover {
+    background-color: #4a006f; /* Um tom mais escuro de roxo para o hover */
+    cursor: pointer; /* Muda o cursor para indicar que o botão é clicável */
+}

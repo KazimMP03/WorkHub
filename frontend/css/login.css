@@ -1,0 +1,36 @@
+/* Estilos para o novo container de cadastro */
+.cadastro-container {
+    text-align: center;
+}
+
+.cadastro-container p {
+    font-size: 14px; /* Diminui o tamanho da fonte */
+}
+
+/* Estilos para o link do cadastro */
+.cadastro-container a {
+    color: #56008C; /* Cor roxa para o link */
+    text-decoration: none; /* Remove o sublinhado padrão do link */
+    font-weight: bold; /* Deixa o texto mais em negrito */
+}
+
+/* Efeito para o hover do link */
+.cadastro-container a:hover {
+    text-decoration: none; /* Adiciona o sublinhado quando o usuário passa o mouse sobre o link */
+    color: #4a006f; /* Um tom mais escuro de roxo para o hover */
+}
+
+/* Estilo específico para o título (h1) dentro do lado-direito */
+.lado-direito h1 {
+    font-size: 27px; /* Define o tamanho da fonte do título */
+    margin-bottom: 16px; /* Adiciona um espaço abaixo do título */
+    color: #000000; /* Define a cor do texto como preta */
+}
+
+/* Estilo da linha de separação */
+.lado-direito .separador {
+    margin: 20px 0; /* Espaço antes e depois da linha */
+    border-bottom: 1px solid #ddd; /* Cor bem clarinha para o traço */
+    width: 100%; /* Faz a linha ocupar toda a largura disponível */
+}
+

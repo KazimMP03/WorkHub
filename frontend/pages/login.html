@@ -3,9 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Cadastro de Usuário - WorkHub</title>
+    <link rel="stylesheet" href="../css/utils.css">
+    <link rel="stylesheet" href="../css/login.css">
 </head>
 <body>
-    <h1>Teste</h1>
+    <div class="container">
+        <div class="lado-esquerdo">
+            <h1>WorkHub</h1>
+            <img src="../img/logo.png" alt="Logo da Empresa">
+        </div>
+        <div class="lado-direito">
+            <h1>Login</h1>
+            <form action="../../backend/process/saveStep.php" method="POST">
+                <input type="text" name="email" id="email" placeholder="Digite seu email" required>
+                <input type="password" name="senha" id="senha" placeholder="Digite sua senha" required>
+                <button type="submit">Entrar</button>
+            </form>
+
+            <div class="separador"></div>
+            <div class="cadastro-container">
+                <p>Não tem uma conta? <a href="../pages/cadastro1.html">Cadastre-se</a></p>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
