@@ -26,7 +26,7 @@ body {
     display: flex; /* Usa flexbox para o lado esq.lado-esquerdo */
     flex-direction: column; /* Coloca os itens em coluna (empilhando-os verticalmente) */
     align-items: center; /* Centraliza os itens horizontalmente */
-    background-color: #56008C; /* Define a cor de fundo do lado esq.lado-esquerdo como roxo */
+    background-color: #DC143C; /* Define a cor de fundo do lado esq.lado-esquerdo como carmim */
     padding: 20px; /* Adiciona um padding interno de 20px */
     width: 35%; /* Define a largura do lado esq.lado-esquerdo como 35% do container */
 }
@@ -91,7 +91,7 @@ body {
 
 /* Estilos específicos para o botão dentro do lado-direito */
 .lado-direito button {
-    background-color: #56008C; /* Define a cor de fundo do botão como roxo */
+    background-color: #DC143C; /* Define a cor de fundo do botão como carmim */
     color: #fff; /* Mantém a cor branca mais forte para o texto */
     font-weight: 550; /* Torna a fonte mais grossa */
     font-size: 16px; /* Tamanho da fonte (caso queira ajustar ainda mais) */
@@ -103,6 +103,6 @@ body {
 }
 
 .lado-direito button:hover {
-    background-color: #4a006f; /* Um tom mais escuro de roxo para o hover */
+    background-color: #9B1B30; /* Um tom mais escuro de carmim para o hover */
     cursor: pointer; /* Muda o cursor para indicar que o botão é clicável */
 }
