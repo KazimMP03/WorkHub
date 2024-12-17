@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Usuário - WorkHub</title>
+    <link rel="stylesheet" href="../css/cadastro.css">
+</head>
+<body>
+    <div class="container">
+        <div class="lado-esquerdo">
+            <h1>WorkHub</h1>
+            <img src="../img/logo.png" alt="Logo da Empresa">
+        </div>
+        <div class="lado-direito">
+            <h1>Cadastro de Usuário</h1>
+            <h2>Insira seu email e senha</h2>
+            <form action="../../backend/process/saveStep.php" method="POST">
+                <input type="text" name="email" id="email" placeholder="Email" required>
+                <input type="password" name="senha" id="senha" placeholder="Senha" required>
+                <button type="submit">Próxima</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

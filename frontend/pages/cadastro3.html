@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Usuário - WorkHub</title>
+    <link rel="stylesheet" href="../css/cadastro.css">
+    <script src="../js/mascara.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="lado-esquerdo">
+            <h1>WorkHub</h1>
+            <img src="../img/logo.png" alt="Logo da Empresa">
+        </div>
+        <div class="lado-direito">
+            <h1>Cadastro de Usuário</h1>
+            <h2>Insira seu CPF e telefone</h2>
+            <form action="../../backend/process/saveStep.php" method="POST" onsubmit="limparDados()">
+                <input type="text" name="cpf" id="cpf" placeholder="CPF" maxlength="14" onkeyup="mascaraCPF()" required>
+                <input type="text" name="telefone" id="telefone" placeholder="Telefone" maxlength="15" onkeyup="mascaraTelefone()" required>
+                <button type="submit">Próxima</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
