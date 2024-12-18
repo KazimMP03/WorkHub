@@ -1,0 +1,35 @@
+/* Estilos para o novo container de login */
+.login-container {
+    text-align: center;
+}
+
+.login-container p {
+    font-size: 14px; /* Diminui o tamanho da fonte */
+}
+
+/* Estilos para o link do login */
+.login-container a {
+    color: #DC143C; /* Cor carmim para o link */
+    text-decoration: none; /* Remove o sublinhado padrão do link */
+    font-weight: bold; /* Deixa o texto mais em negrito */
+}
+
+/* Efeito para o hover do link */
+.login-container a:hover {
+    text-decoration: none; /* Adiciona o sublinhado quando o usuário passa o mouse sobre o link */
+    color: #9B1B30; /* Um tom mais escuro de carmim para o hover */
+}
+
+/* Estilo específico para o título (h1) dentro do lado-direito */
+.lado-direito h1 {
+    font-size: 27px; /* Define o tamanho da fonte do título */
+    margin-bottom: 16px; /* Adiciona um espaço abaixo do título */
+    color: #000000; /* Define a cor do texto como preta */
+}
+
+/* Estilo da linha de separação */
+.lado-direito .separador {
+    margin: 20px 0; /* Espaço antes e depois da linha */
+    border-bottom: 1px solid #ddd; /* Cor bem clarinha para o traço */
+    width: 100%; /* Faz a linha ocupar toda a largura disponível */
+}
