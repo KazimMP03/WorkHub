@@ -30,7 +30,7 @@ class Usuario {
                 ':data_nascimento' => $dados['data_nascimento'],
                 ':telefone' => $dados['telefone'],
                 ':email' => $dados['email'],
-                ':senha' => $dados['senha'], 
+                ':senha' => password_hash($dados['senha'], PASSWORD_DEFAULT), 
                 ':sexo' => $dados['sexo']
             ]);
 

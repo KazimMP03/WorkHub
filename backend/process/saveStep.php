@@ -40,7 +40,7 @@ class Cadastro {
         $_SESSION['email'] = $email;
         $_SESSION['senha'] = $senha; // Aqui seria interessante aplicar criptografia na senha
         // Redireciona para o script backend que irá processar o registro do usuário
-        header('Location: ../../backend/process/registerUser.php');
+        header('Location: ../../backend/controller/registerController.php');
         exit(); // Interrompe a execução do código após o redirecionamento
     }
 }
