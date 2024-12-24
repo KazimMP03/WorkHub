@@ -44,6 +44,17 @@ function  mascaraTelefone() {
         telefone.value = '(' + telefone.value.substring(0, 2) + ') ' + telefone.value.substring(2, 7) + '-' + telefone.value.substring(7, 11);
     }
 }
+
+function mascaraCEP() {
+    var cep = document.getElementById('cep');
+
+    cep.value = apenasNumeros(cep);
+
+    if (cep.value.length > 5) {
+        cep.value = cep.value.substring(0, 5) + '-' + cep.value.substring(5, 9)
+    }
+}
+
 // Função para limpar os dados de CPF e Telefone para enviar para o backend
 function limparDados() {
     // Obtém o elemento do campo 'cpf'
@@ -52,9 +63,13 @@ function limparDados() {
     // Obtém o elemento do campo 'telefone'
     var telefone = document.getElementById('telefone');
 
+    var cep = document.getElementById('cep');
+
     // Limpa a máscara do CPF (removendo os pontos e hífen)
     cpf.value = apenasNumeros(cpf);
 
     // Limpa a máscara do telefone (removendo os parênteses, espaço e hífen)
     telefone.value = apenasNumeros(telefone)
+
+    cep.value = apenasNumeros(cep);
 }
