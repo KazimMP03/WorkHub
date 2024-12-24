@@ -88,6 +88,22 @@ body {
     border: 1px solid #ddd; /* Adiciona uma borda leve aos inputs e botão */
     width: 100%; /* Faz os inputs e o botão ocuparem toda a largura disponível */
     box-sizing: border-box; /* Inclui o padding e a borda nas dimensões totais do elemento */
+
+    /* Configurações para o select */
+    appearance: none; /* Remove a aparência padrão do select */
+    -webkit-appearance: none; /* Remove a aparência no Safari */
+    -moz-appearance: none; /* Remove a aparência no Firefox */
+    cursor: pointer; /* Mudança do cursor para indicar interatividade */
+}
+
+/* Usado para esconder o select Gênero */
+.hidden-option {
+    display: none;
+}
+
+.option:hover {
+    background-color: #9B1B30;
+    color: white;
 }
 
 /* Estilos específicos para o botão dentro do lado-direito */

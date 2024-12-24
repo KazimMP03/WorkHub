@@ -18,13 +18,14 @@
             <form action="../../backend/process/saveStep.php" method="POST">
                 <input type="date" name="data_nascimento" id="data_nascimento" placeholder="Data de Nascimento" required>
                 <select name="sexo" id="sexo" placeholder="Gênero" required>
+                    <option value="" disabled selected class="hidden-option">Gênero</option>
                     <option value="masculino">Masculino</option>
                     <option value="feminino">Feminino</option>
                     <option value="outro">Outro</option>
                 </select>
                 <button type="submit">Próxima</button>
             </form>
-
+            
             <div class="separador"></div>
             
             <div class="login-container">
