@@ -16,7 +16,7 @@
         <div class="lado-direito">
             <h1>Cadastro de Usuário</h1>
             <h2>Insira seu CPF e telefone</h2>
-            <form action="../../backend/process/saveStep.php" method="POST" onsubmit="limparDados()">
+            <form action="../../backend/process/userRegistrationFlow.php" method="POST" onsubmit="limparDados()">
                 <input type="text" name="cpf" id="cpf" placeholder="CPF" maxlength="14" onkeyup="mascaraCPF()" required>
                 <input type="text" name="telefone" id="telefone" placeholder="Telefone" maxlength="15" onkeyup="mascaraTelefone()" required>
                 <button type="submit">Próxima</button>

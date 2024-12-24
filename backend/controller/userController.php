@@ -5,7 +5,7 @@ session_start();
 // Inclui o arquivo de conexão com o banco de dados
 require_once '../config/db.php';
 
-class Usuario {
+class UserController {
     private $pdo; // Atributo para armazenar a conexão com o banco de dados
 
     // Construtor da classe, recebe o PDO
@@ -79,7 +79,7 @@ $dadosUsuario = [
 ];
 
 // Cria um objeto da classe Usuario, passando o PDO (conexão com o banco) para o construtor
-$usuario = new Usuario($pdo);
+$usuario = new UserController($pdo);
 
 // Chama o método 'register' para registrar o usuário no banco de dados
 $usuario->register($dadosUsuario);

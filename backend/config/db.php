@@ -25,7 +25,7 @@ class BancoDeDados {
 // Configurações do Banco de Dados
 $host = "localhost"; // Endereço do servidor(nesse caso, localhost)
 $port = "5432"; // Porta(o padrão do PostgreSQL é 5432)
-$dbname = "nicejobs"; // Nome do Banco de Dados
+$dbname = "workhub"; // Nome do Banco de Dados
 $user = "postgres"; // Nome do usuário
 $password = "123"; // Senha 
 
