@@ -46,10 +46,13 @@ function  mascaraTelefone() {
 }
 
 function mascaraCEP() {
+    // Obtém o elemento do campo 'cep'
     var cep = document.getElementById('cep');
 
+    // Remove os caracteres não númericos
     cep.value = apenasNumeros(cep);
 
+    // Adicona o '-' após o quinto número
     if (cep.value.length > 5) {
         cep.value = cep.value.substring(0, 5) + '-' + cep.value.substring(5, 9)
     }
@@ -62,14 +65,16 @@ function limparDados() {
 
     // Obtém o elemento do campo 'telefone'
     var telefone = document.getElementById('telefone');
-
+    
+    // Obtém o elemento do campo 'telefone'
     var cep = document.getElementById('cep');
 
-    // Limpa a máscara do CPF (removendo os pontos e hífen)
+    // Limpa a máscara do CPF (remove os pontos e hífen)
     cpf.value = apenasNumeros(cpf);
 
-    // Limpa a máscara do telefone (removendo os parênteses, espaço e hífen)
+    // Limpa a máscara do telefone (remove os parênteses, espaço e hífen)
     telefone.value = apenasNumeros(telefone)
 
+    // Limpa a máscara do cep (remove o hífen)
     cep.value = apenasNumeros(cep);
 }
