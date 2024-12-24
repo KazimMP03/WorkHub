@@ -149,13 +149,6 @@ body {
     color: #9B1B30; /* Um tom mais escuro de carmim para o hover */
 }
 
-/* Estilo específico para o título (h1) dentro do lado-direito */
-.lado-direito h1 {
-    font-size: 27px; /* Define o tamanho da fonte do título */
-    margin-bottom: 16px; /* Adiciona um espaço abaixo do título */
-    color: #000000; /* Define a cor do texto como preta */
-}
-
 /* Estilo da linha de separação */
 .lado-direito .separador {
     margin: 20px 0; /* Espaço antes e depois da linha */

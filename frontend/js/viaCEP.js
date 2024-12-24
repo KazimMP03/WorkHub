@@ -51,3 +51,8 @@ function buscarEnderecoViaCEP() {
 
 // Chama a função quando o CEP perder o foco(user der sair do campo CEP)
 document.getElementById('cep').addEventListener('blur', buscarEnderecoViaCEP);
+
+document.getElementById("estado").addEventListener("input", function () {
+    const estadoInput = this.value.toUpperCase();
+    this.value = estadoInput.replace(/[^A-Z]/g, "").slice(0, 2); // Remove caracteres não permitidos e limita a 2 caracteres
+});
