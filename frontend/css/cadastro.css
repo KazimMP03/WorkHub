@@ -44,7 +44,7 @@ body {
     height: 110px; /* Define a altura da imagem */
     border-radius: 50%; /* Torna a imagem circular */
     object-fit: cover; /* Ajusta a imagem para preencher o círculo sem distorcer */
-    margin-top: 30%;
+    margin-top: 40%; /* Ajusta a posição da imagem */
 }
 
 /* Estilos para o lado esquerdo do container */
@@ -67,6 +67,14 @@ body {
 .lado-direito h2 {
     color: black; /* Define a cor do texto como preta */
     font-size: 16px; /* Define um tamanho um pouco menor para o subtítulo */
+    margin-bottom: 20px; /* Adiciona um espaço abaixo do subtítulo */
+    font-weight: 400; /* Deixa o subtítulo mais leve */
+    letter-spacing: 0.5px; /* Espaçamento suave entre as letras */
+}
+
+.lado-direito h4 {
+    color: black; /* Define a cor do texto como preta */
+    font-size: 14px; /* Define um tamanho um pouco menor para o subtítulo */
     margin-bottom: 20px; /* Adiciona um espaço abaixo do subtítulo */
     font-weight: 400; /* Deixa o subtítulo mais leve */
     letter-spacing: 0.5px; /* Espaçamento suave entre as letras */
@@ -99,11 +107,6 @@ body {
 /* Usado para esconder o select Gênero */
 .hidden-option {
     display: none;
-}
-
-.option:hover {
-    background-color: #9B1B30;
-    color: white;
 }
 
 /* Estilos específicos para o botão dentro do lado-direito */
