@@ -1,3 +1,16 @@
+<?php
+session_start();
+
+// Verifica se o usuário está logado
+if (!isset($_SESSION['user_name'])) {
+    header('Location: login.html'); // Redireciona para a página de login se não estiver logado
+    exit();
+}
+
+// Obtém o nome completo da sessão e extrai o primeiro nome
+$fullName = $_SESSION['user_name'];
+$firstName = explode(' ', $fullName)[0];
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,7 +46,7 @@
         <!-- Perfil -->
         <a href="/perfil" class="profile">
             <img src="../img/teste-perfil.png" alt="Foto do Usuário" class="profile-img"/>
-            <span class="profile-name">João</span>
+            <span class="profile-name"><?php echo htmlspecialchars($firstName); ?></span>
         </a>
 
         <!-- Chat -->
