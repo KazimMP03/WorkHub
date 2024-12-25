@@ -1,0 +1,127 @@
+/* Resetando margens e padding */
+* {
+    margin: 0; /* Remove a margem padrão de todos os elementos */
+    padding: 0; /* Remove o padding padrão de todos os elementos */
+    box-sizing: border-box; /* Inclui o padding e borda no cálculo do tamanho do elemento */
+}
+
+/* Estilo do body */
+body {
+    font-family: Arial, sans-serif; /* Define a fonte padrão do corpo para Arial, ou sans-serif caso Arial não esteja disponível */
+}
+
+/* Estilo do header */
+.header {
+    display: flex; /* Usa flexbox para organizar os itens dentro do header */
+    align-items: center; /* Alinha os itens verticalmente no centro */
+    justify-content: space-between; /* Espalha os itens igualmente, com o maior espaço possível entre eles */
+    background-color: #2196f3; /* Define a cor de fundo do header */
+    padding: 10px 20px; /* Adiciona 10px de padding no topo e embaixo, e 20px nas laterais */
+    color: white; /* Define a cor do texto como branco */
+}
+
+/* Estilo do logo e endereços dentro do header */
+.logo {
+    flex: 2; /* Define que o logo ocupa 2/9 da largura do header, em um layout flex */
+    display: flex; /* Usa flexbox para alinhar os itens dentro da div .logo */
+    align-items: center; /* Alinha verticalmente os itens ao centro */
+}
+
+/* Estilo da imagem do logo */
+.logo img {
+    width: 60px; /* Define a largura da imagem */
+    height: 60px; /* Define a altura da imagem, tornando-a quadrada */
+    border-radius: 50%; /* Torna a imagem circular */
+    object-fit: cover; /* Faz com que a imagem ocupe todo o espaço da área sem distorcer */
+}
+
+/* Estilo do título h1 */
+h1 {
+    font-size: 24px; /* Define o tamanho da fonte do título */
+    font-weight: bold; /* Define a espessura da fonte como negrito */
+    color: white; /* Define a cor do texto como branco */
+    text-align: center; /* Centraliza o texto horizontalmente */
+    margin-top: 20px; /* Adiciona 20px de margem no topo */
+    margin-bottom: 20px; /* Adiciona 20px de margem na parte inferior */
+    margin-left: 20px; /* Adiciona 20px de margem à esquerda */
+    letter-spacing: 1px; /* Aumenta o espaçamento entre as letras para uma leitura mais confortável */
+}
+
+/* Estilo para os endereços (como links) */
+.address {
+    display: flex; /* Organiza o conteúdo dentro da div .address com flexbox */
+    align-items: center; /* Alinha os itens verticalmente no centro */
+    color: white; /* Define a cor do texto como branco */
+    text-decoration: none; /* Remove qualquer sublinhado ou decoração do link */
+    font-size: 14px; /* Define o tamanho da fonte */
+    margin-left: 20px; /* Adiciona 20px de margem à esquerda */
+    font-weight: 550; /* Peso da fonte (negrito) */
+}
+
+/* Estilo do ícone de endereço */
+.address i {
+    margin-right: 5px; /* Adiciona um pequeno espaço à direita do ícone */
+}
+
+/* Estilo para a barra de pesquisa */
+.search-container {
+    flex: 6; /* A barra de pesquisa ocupa 6/9 da largura do header */
+    display: flex; /* Organiza os itens dentro da div com flexbox */
+    align-items: center; /* Alinha os itens verticalmente no centro */
+    justify-content: center; /* Centraliza o conteúdo horizontalmente */
+}
+
+/* Estilo da barra de pesquisa */
+.search-bar {
+    width: 80%; /* Define que a barra de pesquisa ocupará 80% da largura do seu contêiner */
+    padding: 8px; /* Adiciona 8px de preenchimento interno */
+    font-size: 14px; /* Define o tamanho da fonte */
+    border-radius: 20px; /* Adiciona bordas arredondadas à barra de pesquisa */
+    border: none; /* Remove a borda padrão */
+    outline: none; /* Remove o contorno que aparece quando o campo é focado */
+}
+
+/* Estilo do botão de pesquisa */
+.search-button {
+    background-color: white; /* Define o fundo do botão como branco */
+    border: none; /* Remove a borda padrão do botão */
+    padding: 8px; /* Adiciona 8px de preenchimento interno */
+    border-radius: 50%; /* Faz o botão ter bordas arredondadas */
+    cursor: pointer; /* Muda o cursor para uma mãozinha quando passar sobre o botão */
+    margin-left: 8px; /* Adiciona 8px de margem à esquerda */
+}
+
+/* Estilo do ícone dentro do botão de pesquisa */
+.search-button i {
+    color: #2196f3; /* Define a cor do ícone como azul (#2196f3) */
+}
+
+/* Estilo para ícones de Perfil, Chat e Favoritos */
+.profile, .chat, .favorites {
+    flex: 1; /* Cada item ocupa 1/9 da largura do header */
+    display: flex; /* Organiza os itens dentro da div com flexbox */
+    align-items: center; /* Alinha os itens verticalmente no centro */
+    justify-content: center; /* Centraliza os itens horizontalmente */
+    color: white; /* Define a cor do texto como branco */
+    text-decoration: none; /* Remove qualquer decoração de link */
+    font-size: 14px; /* Define o tamanho da fonte */
+    font-weight: 550; /* Peso da fonte (negrito) */
+}
+
+/* Estilo para a imagem de perfil */
+.profile img {
+    width: 35px; /* Define a largura da imagem */
+    height: 35px; /* Define a altura da imagem, tornando-a circular */
+    border-radius: 50%; /* Torna a imagem circular */
+    margin-right: 5px; /* Adiciona um pequeno espaço à direita da imagem */
+}
+
+/* Estilo para o nome do perfil */
+.profile-name {
+    display: inline-block; /* Exibe o nome do perfil na mesma linha que a imagem */
+}
+
+/* Estilo para os ícones de perfil, chat e favoritos */
+.profile i, .chat i, .favorites i {
+    margin-right: 8px; /* Adiciona 8px de margem à direita de cada ícone */
+}
