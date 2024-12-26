@@ -36,7 +36,7 @@ class Address {
     public function linkToUser($userId, $addressId) {
         try {
             // Prepara a query SQL para vincular o endereço ao usuário
-            $query = "INSERT INTO user_addresses (user_id, address_id) VALUES (:user_id, :address_id)";
+            $query = "INSERT INTO user_address (user_id, address_id) VALUES (:user_id, :address_id)";
             $stmt = $this->pdo->prepare($query); // Prepara a consulta
             $stmt->execute([ // Executa a consulta passando o ID do usuário e o ID do endereço
                 ':user_id' => $userId,
@@ -47,6 +47,24 @@ class Address {
             throw new Exception("Erro ao vincular o endereço ao usuário: " . $e->getMessage());
         }
     }
+
+    public function getAddressesByUserId($userId) {
+        // SQL com os ajustes feitos para refletir as mudanças
+        $sql = "SELECT address.* 
+                FROM address
+                INNER JOIN user_address ON address.id = user_address.address_id
+                WHERE user_address.user_id = :user_id";
+    
+        // Preparando e executando a consulta
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam(':user_id', $userId, PDO::PARAM_INT);
+        $stmt->execute();
+    
+        // Retorna todos os endereços associados ao usuário
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+    
+    
 }
 ?>
 

@@ -30,7 +30,7 @@ $firstName = explode(' ', $fullName)[0];
         </div>
 
         <!-- Endereços -->
-        <a href="../pages/registerAddress.html" class="address">
+        <a href="../../backend/view/listAddress.php" class="address">
             <i class="fas fa-map-marker-alt"></i>
             <span>Endereços</span>
         </a>
