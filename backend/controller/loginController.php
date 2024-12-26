@@ -29,11 +29,18 @@ class LoginController {
                 echo "Email ou senha incorretos.";
                 exit();
             }
+            
+            // Verifica se o campo 'nome' está presente e não é nulo
+            // Adicionei essa verificação por conta de um bug que não consegui encontrar o nome do user da session
+            if (!isset($usuario['nome']) || empty($usuario['nome'])) {
+                echo "Erro: Nome do usuário não encontrado ou está vazio no banco de dados.";
+                exit();
+            }
 
             // Login bem-sucedido, cria a sessão
             session_start();
             $_SESSION['user_id'] = $usuario['id']; // Salva o ID do usuário na sessão 
-            $_SESSION['user_name'] = $usuario['name']; // Salva o nome do usuário na sessão
+            $_SESSION['user_name'] = $usuario['nome']; // Salva o nome do usuário na sessão
             header('Location: ../../frontend/pages/home.php'); // Redireciona para 'home.php'
             exit(); 
         } catch (PDOException $e) {

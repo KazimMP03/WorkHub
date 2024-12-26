@@ -1,5 +1,5 @@
 <?php
-session_start();
+session_start();  // Inicia a sessão
 
 // Verifica se o usuário está logado
 if (!isset($_SESSION['user_name'])) {
