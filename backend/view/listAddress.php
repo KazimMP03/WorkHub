@@ -1,5 +1,5 @@
 <?php
-session_start(); // Inicia a sessõa
+session_start(); // Inicia a sessão
 
 // Verifica se o usuário está logado
 if (!isset($_SESSION['user_id'])) {
@@ -33,30 +33,36 @@ try {
     <link rel="stylesheet" href="../../frontend/css/listAddress.css">
 </head>
 <body>
-    <h1>Meus Endereços</h1>
-    
-    <!-- Botão para adicionar um novo endereço -->
-    <div class="add-address-button">
-        <a href="../../frontend/pages/registerAddress.html">
-            <button>Cadastrar novo endereço</button>
-        </a>
-    </div>
+    <header>
+        <?php include '../../frontend/include/header.php';?>
+    </header>
 
-    <?php if (!empty($addresses)): ?>
-        <ul class="address-list">
+    <h2>Meus Endereços</h2>
+
+    <!-- Botão de Adicionar Endereço como o primeiro cartão -->
+    <div class="address-list">
+        <div class="address-item add-address-card">
+            <a href="../../frontend/pages/registerAddress.html">
+                <button>
+                    <i class="fas fa-plus plus-icon"></i> Adicionar endereço
+                </button>
+            </a>
+        </div>
+
+        <!-- Lista de endereços -->
+        <?php if (!empty($addresses)): ?>
             <?php foreach ($addresses as $address): ?>
-                <li class="address-item">
+                <div class="address-item">
                     <strong><?php echo htmlspecialchars($address['rua']); ?>, <?php echo htmlspecialchars($address['numero']); ?></strong><br>
                     Bairro: <?php echo htmlspecialchars($address['bairro']); ?><br>
                     Cidade: <?php echo htmlspecialchars($address['cidade']); ?> - <?php echo htmlspecialchars($address['estado']); ?><br>
                     CEP: <?php echo htmlspecialchars($address['cep']); ?><br>
                     <?php echo !empty($address['complemento']) ? 'Complemento: ' . htmlspecialchars($address['complemento']) : ''; ?>
-                </li>
+                </div>
             <?php endforeach; ?>
-        </ul>
-    <?php else: ?>
-        <p>Nenhum endereço cadastrado.</p>
-        <a href="../../frontend/pages/registerAddress.html">Cadastrar novo endereço</a>
-    <?php endif; ?>
+        <?php else: ?>
+            <p>Nenhum endereço cadastrado.</p>
+        <?php endif; ?>
+    </div>
 </body>
 </html>

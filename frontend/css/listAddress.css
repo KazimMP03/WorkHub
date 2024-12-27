@@ -1,0 +1,133 @@
+/* Título da página */
+h2 {
+    font-size: 24px; /* Define o tamanho da fonte do título */
+    font-weight: bold; /* Define o peso da fonte como negrito */
+    color: #2196f3; /* Cor do título */
+    margin-top: 20px; /* Espaço no topo */
+    margin-bottom: 20px; /* Espaço na parte inferior */
+    margin-left: 20px; /* Espaço à esquerda */
+    letter-spacing: 1px; /* Aumenta o espaçamento entre as letras */
+}
+
+/* Lista de endereços */
+.address-list {
+    list-style-type: none; /* Remove os marcadores da lista */
+    display: grid; /* Utiliza grid para organizar os endereços */
+    gap: 20px; /* Espaço entre os itens */
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Responsividade: cria colunas de tamanhos variáveis */
+    padding: 0;
+    margin-top: 20px;
+}
+
+/* Estilo do cartão de endereço */
+.address-item {
+    background-color: white; /* Fundo branco para os cartões */
+    border-radius: 10px; /* Bordas arredondadas */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    padding: 20px; /* Espaçamento interno do cartão */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease; /* Animação suave para efeitos de hover */
+}
+
+.address-item:hover {
+    transform: translateY(-10px); /* Eleva o cartão quando passa o mouse */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Sombra mais intensa ao passar o mouse */
+}
+
+/* Estilo para o conteúdo do endereço */
+.address-item strong {
+    font-size: 1.2rem; /* Tamanho da fonte para rua e número */
+    color: #2196f3; /* Cor azul para o texto principal */
+}
+
+.address-item p {
+    font-size: 1rem; /* Tamanho da fonte para o conteúdo do endereço */
+    margin-top: 8px; /* Espaço acima do parágrafo */
+    line-height: 1.6; /* Altura da linha para facilitar a leitura */
+}
+
+/* Complemento de endereço */
+.address-item .complemento {
+    font-size: 0.9rem; /* Menor tamanho de fonte para complemento */
+    color: #777; /* Cor mais suave para o complemento */
+    margin-top: 8px; /* Espaço superior */
+}
+
+/* Estilo para o botão de adicionar um novo endereço (também um cartão) */
+.add-address-card {
+    background-color: white; /* Fundo branco para o botão */
+    border-radius: 10px; /* Bordas arredondadas */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    padding: 20px; /* Preenchimento interno do botão */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease; /* Animação de hover */
+    cursor: pointer; /* Cursor de mãozinha */
+}
+
+.add-address-card:hover {
+    transform: translateY(-10px); /* Efeito de elevação ao passar o mouse */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Sombra mais intensa ao passar o mouse */
+}
+
+.add-address-card button {
+    background-color: transparent; /* Fundo transparente para o botão */
+    color: #2196f3; /* Cor do texto */
+    font-size: 1.3rem; /* Tamanho da fonte aumentado */
+    font-weight: bold; /* Torna a fonte mais grossa (negrito) */
+    padding: 15px 25px; /* Preenchimento do botão */
+    border: none; /* Remove a borda padrão */
+    border-radius: 10px; /* Bordas arredondadas */
+    display: flex; /* Flexbox para alinhar ícone e texto */
+    align-items: center; /* Alinha ícone e texto verticalmente */
+    justify-content: center; /* Alinha o conteúdo horizontalmente */
+    text-decoration: none; /* Remove qualquer sublinhado do link */
+}
+
+.add-address-card button .plus-icon {
+    margin-right: 10px; /* Espaço entre o ícone e o texto */
+    font-size: 1.5rem; /* Aumenta o tamanho do ícone */
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .address-list {
+        grid-template-columns: 1fr; /* Exibe os cartões em uma coluna única em telas menores */
+    }
+}
+
+/* Garantir que o link não tenha estilo de texto padrão */
+.add-address-card a {
+    text-decoration: none; /* Remove o sublinhado do link */
+    color: inherit; /* Herda a cor do elemento pai (sem a cor roxa padrão) */
+}
+
+/* Estilo do botão Adicionar Endereço */
+.add-address-card button {
+    background-color: transparent; /* Fundo transparente para o botão */
+    color: #2196f3; /* Cor do texto */
+    font-size: 1.3rem; /* Tamanho da fonte aumentado */
+    font-weight: bold; /* Torna a fonte mais grossa (negrito) */
+    padding: 15px 25px; /* Preenchimento do botão */
+    border: none; /* Remove a borda padrão */
+    border-radius: 10px; /* Bordas arredondadas */
+    display: flex; /* Flexbox para alinhar ícone e texto */
+    align-items: center; /* Alinha ícone e texto verticalmente */
+    justify-content: center; /* Alinha o conteúdo horizontalmente */
+    text-decoration: none; /* Remove qualquer sublinhado do link */
+    cursor: pointer; /* Mãozinha ao passar o mouse */
+}
+
+.add-address-card button .plus-icon {
+    margin-right: 10px; /* Espaço entre o ícone e o texto */
+    font-size: 1.5rem; /* Aumenta o tamanho do ícone */
+}
+
+/* Remover qualquer cor de foco ou estilo de link clicado */
+.add-address-card a:focus,
+.add-address-card a:visited,
+.add-address-card a:hover {
+    color: inherit; /* Garante que não haja alteração de cor */
+    text-decoration: none; /* Remove qualquer sublinhado no foco ou visita */
+}
+

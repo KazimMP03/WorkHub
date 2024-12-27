@@ -5,7 +5,7 @@
 /* Definições gerais do corpo da página */
 body {
     font-family: Arial, sans-serif; /* Definindo a fonte padrão do corpo */
-    background-color: #f8f8f8; /* Cor de fundo clara para o corpo */
+    background-color: #F9F9F9; /* Cor de fundo clara para o corpo */
     display: flex; /* Usando Flexbox para layout */
     justify-content: center; /* Centraliza horizontalmente o conteúdo */
     align-items: center; /* Centraliza verticalmente o conteúdo */
@@ -33,7 +33,7 @@ body {
     display: flex; /* Flexbox para organização interna */
     flex-direction: column; /* Organiza os itens verticalmente */
     align-items: center; /* Alinha os itens no centro horizontalmente */
-    background-color: #2196f3; /* Cor de fundo azul */
+    background-color: #2c3e50; /* Cor de fundo azul escuro */
     padding: 20px; /* Espaçamento interno de 20px */
     width: 35%; /* O lado esquerdo ocupa 35% da largura do container */
 }
@@ -74,13 +74,13 @@ body {
     color: #000000; /* Cor do texto preta */
 }
 
-/* Estilo do subtítulo (h2) no lado direito */
+/* Estilos para subtítulos no lado direito */
 .lado-direito h2 {
-    color: black; /* Cor preta */
-    font-size: 16px; /* Tamanho de fonte menor que o h1 */
-    margin-bottom: 20px; /* Margem inferior de 20px */
-    font-weight: 400; /* Peso da fonte normal */
-    letter-spacing: 0.5px; /* Espaciamento entre letras */
+    color: black; /* Cor do texto preta */
+    font-size: 16px; /* Tamanho da fonte */
+    margin-bottom: 20px; /* Espaçamento abaixo do subtítulo */
+    font-weight: 400; /* Peso da fonte (normal) */
+    letter-spacing: 0.5px; /* Espaçamento entre letras */
 }
 
 /* Estilo do formulário dentro do lado direito */
@@ -102,7 +102,7 @@ body {
 
 /* Estilo do botão no lado direito */
 .lado-direito button {
-    background-color: #2196f3; /* Cor de fundo azul */
+    background-color: #2c3e50; /* Azul escuro para o botão */
     color: #fff; /* Texto branco */
     font-weight: 550; /* Peso da fonte mais forte */
     font-size: 16px; /* Tamanho da fonte */
@@ -115,7 +115,7 @@ body {
 
 /* Efeito de hover para o botão */
 .lado-direito button:hover {
-    background-color: #137fd9; /* Cor de fundo azul mais escuro */
+    background-color: #1d2b36; /* Azul claro para o hover */
     cursor: pointer; /* Muda o cursor para indicar que é clicável */
 }
 
@@ -135,7 +135,7 @@ body {
 
 /* Estilo do link para a tela de cadastro */
 .cadastro-container a {
-    color: #2196f3; /* Cor azul do link */
+    color: #2c3e50; /* Azul escuro do link */
     text-decoration: none; /* Remove o sublinhado do link */
     font-weight: bold; /* Torna o texto em negrito */
 }
@@ -143,7 +143,7 @@ body {
 /* Efeito de hover no link de cadastro */
 .cadastro-container a:hover {
     text-decoration: none; /* Garante que o sublinhado não apareça */
-    color: #137fd9; /* Altera a cor para azul mais escuro quando passa o mouse */
+    color: #1d2b36; /* Azul mais claro para o hover do link */
 }
 
 /* Estilo do separador entre seções no lado direito */
@@ -152,4 +152,3 @@ body {
     border-bottom: 1px solid #ddd; /* Linha separadora com borda inferior */
     width: 100%; /* Largura total */
 }
-

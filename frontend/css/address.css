@@ -5,7 +5,7 @@
 /* Estilos gerais para o corpo da página */
 body {
     font-family: Arial, sans-serif; /* Define a fonte usada na página */
-    background-color: #f8f8f8; /* Define uma cor de fundo clara para o corpo da página */
+    background-color: #F9F9F9; /* Define uma cor de fundo clara para o corpo da página */
     display: flex; /* Usa o modelo de layout flexbox para o corpo */
     justify-content: center; /* Centraliza os itens horizontalmente */
     align-items: center; /* Centraliza os itens verticalmente */
@@ -34,7 +34,7 @@ body {
     display: flex; /* Usa flexbox para o layout do lado esquerdo */
     flex-direction: column; /* Organiza os itens em uma coluna */
     align-items: center; /* Centraliza os itens horizontalmente */
-    background-color: #2196f3; /* Define a cor de fundo do lado esquerdo como azul */
+    background-color: #2c3e50; /* Define a cor de fundo do lado esquerdo como azul */
     padding: 20px; /* Adiciona padding interno de 20px */
     width: 35%; /* Define a largura do lado esquerdo como 35% do container */
 }
@@ -116,7 +116,7 @@ body {
 
 /* Estilos específicos para o botão dentro do lado direito */
 .lado-direito button {
-    background-color: #2196f3; /* Define a cor de fundo do botão como azul */
+    background-color: #2c3e50; /* Define a cor de fundo do botão como azul */
     color: #fff; /* Define a cor do texto como branca */
     font-weight: 550; /* Torna a fonte mais grossa para o botão */
     font-size: 16px; /* Define o tamanho da fonte do botão */
@@ -129,7 +129,7 @@ body {
 
 /* Efeito de hover no botão */
 .lado-direito button:hover {
-    background-color: #137fd9; /* Define um tom mais escuro de azul no hover */
+    background-color: #1d2b36; /* Define um tom mais escuro de azul no hover */
     cursor: pointer; /* Muda o cursor para indicar que o botão é clicável */
 }
 
