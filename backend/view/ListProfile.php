@@ -38,6 +38,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         echo "Erro ao atualizar o perfil: " . $e->getMessage();
     }
 }
+
+// Função para formatar o número de telefone
+// Necessário para aplicar a máscara para exibir para o usuário
+function formatarTelefone($telefone) {
+    // Remove todos os caracteres não numéricos
+    $telefone = preg_replace('/[^0-9]/', '', $telefone);
+    
+    // Verifica se o número tem 11 dígitos (como no exemplo: 11940385156)
+    if (strlen($telefone) == 11) {
+        // Adiciona a máscara (XX) XXXXX-XXXX
+        $telefoneFormatado = '(' . substr($telefone, 0, 2) . ') ' . substr($telefone, 2, 5) . '-' . substr($telefone, 7, 4);
+        return $telefoneFormatado;
+    }
+    
+    // Se o número não tiver 11 dígitos, retorna o número sem máscara (você pode modificar isso conforme necessidade)
+    return $telefone;
+}
 ?>
 
 <!DOCTYPE html>
@@ -46,36 +63,57 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Perfil</title>
+    <link rel="stylesheet" href="../../frontend/css/listProfile.css">
 </head>
 <body>
     <!-- Header -->
-    <?php include '../../frontend/include/header.php';?>
-    
-    <form method="POST" enctype="multipart/form-data">
-        <h1>Editar Perfil</h1>
+    <?php include '../../frontend/include/header.php'; ?>
 
-        <!-- Exibe a foto de perfil atual -->
-        <img src="../../uploads/<?php echo htmlspecialchars($userData['foto']); ?>" alt="Foto do Perfil" width="150">
-        <label for="foto">Nova Foto de Perfil:</label>
-        <input type="file" name="foto" id="foto">
+    <div class="container">
+        <!-- Parte Esquerda (Perfil do Usuário) -->
+        <div class="profile-container">
+            <h1>Perfil do Usuário</h1>
 
-        <label for="nome_completo">Nome Completo:</label>
-        <input type="text" name="nome_completo" id="nome_completo" value="<?php echo htmlspecialchars($userData['nome']); ?>" required>
+            <!-- Foto de perfil (clicável) -->
+            <div class="profile-photo-container">
+                <img src="../../uploads/<?php echo htmlspecialchars($userData['foto']); ?>" alt="Foto do Perfil" class="profile-photo" id="profile-photo">
+                <input type="file" name="foto" id="foto" class="foto-input">
+            </div>
 
-        <label for="email">E-mail:</label>
-        <input type="email" name="email" id="email" value="<?php echo htmlspecialchars($userData['email']); ?>" required>
+            <!-- Nome e Telefone -->
+            <div class="profile-info">
+                <p class="p-nome"><?php echo htmlspecialchars($userData['nome']); ?></p>
+                <p><?php echo htmlspecialchars(formatarTelefone($userData['telefone'])); ?></p>
+            </div>
+        </div>
 
-        <label for="telefone">Telefone:</label>
-        <input type="text" name="telefone" id="telefone" value="<?php echo htmlspecialchars($userData['telefone']); ?>" required>
+        <!-- Parte Direita (Formulário de Edição) -->
+        <div class="form-container">
+            <h1>Editar Perfil</h1>
 
-        <label for="sexo">Sexo:</label>
-        <select name="sexo" id="sexo">
-            <option value="masculino" <?php echo $userData['sexo'] == 'masculino' ? 'selected' : ''; ?>>Masculino</option>
-            <option value="feminino" <?php echo $userData['sexo'] == 'feminino' ? 'selected' : ''; ?>>Feminino</option>
-            <option value="outro" <?php echo $userData['sexo'] == 'outro' ? 'selected' : ''; ?>>Outro</option>
-        </select>
+            <form method="POST" enctype="multipart/form-data">
+                <label for="foto">Nova Foto de Perfil:</label>
+                <input type="file" name="foto" id="foto">
 
-        <button type="submit">Salvar Alterações</button>
-    </form>
+                <label for="nome_completo">Nome Completo:</label>
+                <input type="text" name="nome_completo" id="nome_completo" value="<?php echo htmlspecialchars($userData['nome']); ?>" required>
+
+                <label for="email">E-mail:</label>
+                <input type="email" name="email" id="email" value="<?php echo htmlspecialchars($userData['email']); ?>" required>
+
+                <label for="telefone">Telefone:</label>
+                <input type="text" name="telefone" id="telefone" value="<?php echo htmlspecialchars($userData['telefone']); ?>" required>
+
+                <label for="sexo">Sexo:</label>
+                <select name="sexo" id="sexo">
+                    <option value="masculino" <?php echo $userData['sexo'] == 'masculino' ? 'selected' : ''; ?>>Masculino</option>
+                    <option value="feminino" <?php echo $userData['sexo'] == 'feminino' ? 'selected' : ''; ?>>Feminino</option>
+                    <option value="outro" <?php echo $userData['sexo'] == 'outro' ? 'selected' : ''; ?>>Outro</option>
+                </select>
+
+                <button type="submit">Salvar Alterações</button>
+            </form>
+        </div>
+    </div>
 </body>
 </html>

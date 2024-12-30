@@ -1,0 +1,116 @@
+/* Garantir que o padding e a borda sejam contados dentro da largura/altura */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Container principal com flexbox */
+.container {
+    display: flex;
+    justify-content: space-between;
+    padding: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Parte Esquerda (Perfil do Usuário) */
+.profile-container {
+    width: 30%; /* Largura da parte esquerda */
+    background-color: #fff; /* Fundo branco para o cartão */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    text-align: center;
+}
+
+/* Título da parte do perfil */
+.profile-container h1 {
+    font-size: 24px;
+    color: black;
+    margin-bottom: 20px;
+}
+
+/* Foto de perfil */
+.profile-photo-container {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.profile-photo {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%; /* Deixa a foto arredondada */
+    object-fit: cover;
+    cursor: pointer; /* Indica que a foto é clicável */
+    border: 2px solid #ddd; /* Borda suave */
+}
+
+.foto-input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0; /* Torna o input invisível */
+    cursor: pointer; /* Indica que o input é clicável */
+}
+
+/* Aumentar a fonte do nome */
+.p-nome {
+    font-size: 22px;
+}
+
+/* Parte Direita (Formulário de Edição) */
+.form-container {
+    width: 65%; /* Largura da parte direita */
+    background-color: #fff; /* Fundo branco para o formulário */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+/* Estilos das labels */
+.form-container label {
+    display: block;
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 5px; /* Espaçamento abaixo da label */
+}
+
+/* Estilos para os campos de entrada e select */
+.form-container input, select {
+    padding: 10px; /* Espaçamento interno */
+    font-size: 16px; /* Tamanho da fonte */
+    border-radius: 8px; /* Bordas arredondadas */
+    border: 1px solid #ddd; /* Borda sutil */
+    width: 100%; /* Preenche toda a largura disponível */
+    box-sizing: border-box; /* Inclui bordas e preenchimentos no tamanho total */
+    appearance: none; /* Remove a aparência padrão do navegador */
+    -webkit-appearance: none; /* Remove a aparência padrão no Safari */
+    -moz-appearance: none; /* Remove a aparência padrão no Firefox */
+    cursor: pointer; /* Mostra o cursor de "mão" em campos clicáveis */
+    margin-bottom: 5px; /* Adiciona espaçamento abaixo de cada campo */
+}
+
+/* Estilos para o botão no lado direito */
+.form-container button {
+    margin-top: 10px; /* Adiciona uma margem no topo */
+    background-color: #2c3e50; /* Azul escuro para o botão */
+    color: #fff; /* Cor do texto (branco) */
+    font-weight: 550; /* Peso da fonte (negrito) */
+    font-size: 16px; /* Tamanho da fonte */
+    padding: 10px; /* Espaçamento interno */
+    border-radius: 8px; /* Bordas arredondadas */
+    border: 1px solid #ddd; /* Borda sutil */
+    width: 100%; /* Largura total do botão */
+    box-sizing: border-box; /* Inclui borda no tamanho do botão */
+}
+
+/* Efeito de hover no botão */
+.form-container button:hover {
+    background-color: #1d2b36; /* Azul claro para o hover */
+    cursor: pointer; /* Mostra o cursor de "mão" ao passar o mouse */
+}
+
