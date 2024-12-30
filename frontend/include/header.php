@@ -2,7 +2,7 @@
 // Verifica se o usuário está logado (se 'user_name' ou 'user_id' não estiverem definidos)
 if (!isset($_SESSION['user_name']) || !isset($_SESSION['user_id'])) {
     // Se não estiver, redireciona para página de login
-    header('Location: ../pages/login.html');
+    header('Location: ../../frontend/pages/login.html');
     exit();
 }
 

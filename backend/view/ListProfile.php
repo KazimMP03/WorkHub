@@ -48,6 +48,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <title>Editar Perfil</title>
 </head>
 <body>
+    <!-- Header -->
+    <?php include '../../frontend/include/header.php';?>
+    
     <form method="POST" enctype="multipart/form-data">
         <h1>Editar Perfil</h1>
 

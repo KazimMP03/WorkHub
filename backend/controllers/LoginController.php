@@ -1,6 +1,6 @@
 <?php
 // Inclui o arquivo de configuração do banco de dados
-require_once '../config/db.php';
+require_once '../../backend/config/db.php';
 
 class LoginController {
     private $pdo; // Variável $pdo que irá armazenar a conexão com o banco de dados
@@ -37,8 +37,11 @@ class LoginController {
                 exit();
             }
 
-            // Login bem-sucedido, cria a sessão
-            session_start();
+            // Inicia a sessão apenas se não estiver ativa
+            if (session_status() == PHP_SESSION_NONE) {
+                session_start();
+            }
+            
             $_SESSION['user_id'] = $usuario['id']; // Salva o ID do usuário na sessão 
             $_SESSION['user_name'] = $usuario['nome']; // Salva o nome do usuário na sessão
             header('Location: ../../frontend/pages/home.php'); // Redireciona para 'home.php'

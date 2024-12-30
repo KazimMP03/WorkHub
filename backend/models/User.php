@@ -41,6 +41,20 @@ class User {
         }
     }
 
+    // Método para obter a foto do usuário
+    public function getUserPhoto($userId) {
+        try {
+            // Prepara a query SQL para pegar a foto do usuário
+            $query = "SELECT foto FROM users WHERE id = :id";
+            $stmt = $this->pdo->prepare($query);
+            $stmt->execute([':id' => $userId]);
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $result ? $result['foto'] : null; // Retorna o nome da foto ou null se não existir
+        } catch (PDOException $e) {
+            throw new Exception("Erro ao buscar foto do usuário: " . $e->getMessage());
+        }
+    }
+
     public function updatePhoto($userId, $foto) {
         try {
             // Prepara a query SQL para atualizar a foto de perfil

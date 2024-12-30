@@ -9,8 +9,7 @@ session_start() // Inicializa a sessão
     <title>Home - WorkHub</title>
 </head>
 <body>
-    <header>
-        <?php include '../include/header.php';?>
-    </header>
+    <!-- Header -->
+    <?php include '../include/header.php';?>
 </body>
 </html>

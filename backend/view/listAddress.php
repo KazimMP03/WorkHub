@@ -33,9 +33,8 @@ try {
     <link rel="stylesheet" href="../../frontend/css/listAddress.css">
 </head>
 <body>
-    <header>
-        <?php include '../../frontend/include/header.php';?>
-    </header>
+    <!-- Header -->
+    <?php include '../../frontend/include/header.php';?>
 
     <h2>Meus Endereços</h2>
 
