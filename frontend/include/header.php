@@ -23,7 +23,7 @@ $primeiroNome = explode(' ', $nomeCompleto);
         </div>
 
         <!-- Endereços -->
-        <a href="../../backend/view/listAddress.php" class="address">
+        <a href="../../backend/view/ListAddress.php" class="address">
             <i class="fas fa-map-marker-alt"></i>
             <span>Endereços</span>
         </a>
