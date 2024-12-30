@@ -11,6 +11,33 @@ class UserController {
         $this->userModel = new User($pdo); // Cria o modelo de usuário com a conexão ao banco
     }
 
+    // Método para editar a foto de perfil
+    public function editProfile($userId, $dados, $foto = null) {
+        // Ainda preciso adionar a lógica para editar todas as informações que podem ser edidatas
+
+        if ($foto) {
+            $fotoNome = $this->uploadFoto($foto); // Método para fazer upload da foto e salvar o nome do arquivo
+            $this->userModel->updatePhoto($userId, $fotoNome);
+        }
+    }
+
+    // Função para fazer o upload da foto
+    private function uploadFoto($foto) {
+        // Diretório onde as fotos serão armazenadas
+        $diretorio = '../../uploads/';
+
+        // Gera um nome único para a foto
+        $extensao = pathinfo($foto['name'], PATHINFO_EXTENSION);
+        $nomeFoto = uniqid() . '.' . $extensao;
+
+        // Move o arquivo para o diretório de uploads
+        if (move_uploaded_file($foto['tmp_name'], $diretorio . $nomeFoto)) {
+            return $nomeFoto;
+        } else {
+            throw new Exception("Erro ao fazer upload da foto.");
+        }
+    }
+
     // Método para registrar um novo usuário
     public function register($dados) {
         try {

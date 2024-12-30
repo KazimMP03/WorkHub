@@ -41,6 +41,22 @@ class User {
         }
     }
 
+    public function updatePhoto($userId, $foto) {
+        try {
+            // Prepara a query SQL para atualizar a foto de perfil
+            $query = "UPDATE users SET foto = :foto WHERE id = :id";
+            $stmt = $this->pdo->prepare($query);
+            $stmt->execute([
+                ':foto' => $foto,
+                ':id' => $userId
+            ]);
+            // Retorna true se a atualização for bem-sucedida
+            return true;
+        } catch (PDOException $e) {
+            throw new Exception("Erro ao atualizar a foto: " . $e->getMessage());
+        }
+    }
+
     // Método para verificar se um email já existe no BD
     public function emailExists($email) {
         try {
