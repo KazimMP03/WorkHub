@@ -114,3 +114,28 @@
     cursor: pointer; /* Mostra o cursor de "mão" ao passar o mouse */
 }
 
+/* Estilo para o ícone de lápis */
+.edit-photo-icon {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background-color: rgba(0, 0, 0, 0.5); /* Fundo semi-transparente */
+    border-radius: 50%;
+    padding: 5px;
+    color: white;
+    cursor: pointer;
+}
+
+/* Estilo para a imagem de perfil (para garantir que o ícone apareça dentro da foto) */
+.profile-photo-container {
+    position: relative;
+    display: inline-block;
+}
+
+.profile-photo {
+    width: 150px;  /* Tamanho da foto */
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+

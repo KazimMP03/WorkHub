@@ -20,7 +20,7 @@ $userData = $stmt->fetch(PDO::FETCH_ASSOC);
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Recebe os dados do formulário
     $dados = [
-        'nome_completo' => $_POST['nome_completo'],
+        'nome' => $_POST['nome_completo'],
         'email' => $_POST['email'],
         'telefone' => $_POST['telefone'],
         'sexo' => $_POST['sexo'],
@@ -30,12 +30,27 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Recebe a foto, caso tenha sido enviada
     $foto = isset($_FILES['foto']) ? $_FILES['foto'] : null;
 
+    $alterado = false;
+
+    foreach ($dados as $campo => $value) {
+        if ($value != $userData[$campo]) {
+            $alterado = true;
+            break;
+        }
+    }
+
+    if (!$alterado || !$foto) {
+        echo "Nenhuma alteração detectada. Os dados atuais serão mantidos.";
+        return;
+    }
+
     // Edita o perfil
     try {
         $userController->editProfile($_SESSION['user_id'], $dados, $foto);
         echo "Perfil atualizado com sucesso!";
+        // header('Location: ../../frontend/pages/home.php');
     } catch (Exception $e) {
-        echo "Erro ao atualizar o perfil: " . $e->getMessage();
+        throw new Exception("Erro ao atualizar o perfil: " . $e->getMessage());
     }
 }
 
@@ -64,6 +79,7 @@ function formatarTelefone($telefone) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Perfil</title>
     <link rel="stylesheet" href="../../frontend/css/listProfile.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Font Awesome -->
 </head>
 <body>
     <!-- Header -->
@@ -77,6 +93,9 @@ function formatarTelefone($telefone) {
             <!-- Foto de perfil (clicável) -->
             <div class="profile-photo-container">
                 <img src="../../uploads/<?php echo htmlspecialchars($userData['foto']); ?>" alt="Foto do Perfil" class="profile-photo" id="profile-photo">
+                <label for="foto" class="edit-photo-icon">
+                    <i class="fas fa-pencil-alt"></i>
+                </label>
                 <input type="file" name="foto" id="foto" class="foto-input">
             </div>
 
@@ -92,9 +111,6 @@ function formatarTelefone($telefone) {
             <h1>Editar Perfil</h1>
 
             <form method="POST" enctype="multipart/form-data">
-                <label for="foto">Nova Foto de Perfil:</label>
-                <input type="file" name="foto" id="foto">
-
                 <label for="nome_completo">Nome Completo:</label>
                 <input type="text" name="nome_completo" id="nome_completo" value="<?php echo htmlspecialchars($userData['nome']); ?>" required>
 
@@ -115,5 +131,11 @@ function formatarTelefone($telefone) {
             </form>
         </div>
     </div>
+    <script>
+        // Script para permitir a troca de foto ao clicar no ícone
+        document.querySelector('.edit-photo-icon').addEventListener('click', function() {
+            document.getElementById('foto').click();  // Abre o campo de upload de foto
+        });
+    </script>
 </body>
 </html>

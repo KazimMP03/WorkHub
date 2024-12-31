@@ -13,19 +13,46 @@ class UserController {
 
     // Método para editar a foto de perfil
     public function editProfile($userId, $dados, $foto = null) {
-        // Ainda preciso adionar a lógica para editar todas as informações que podem ser edidatas
+        $usuarioAlterado = false;
 
-        if ($foto) {
+        // Verifica se algum dos campos foi alterado
+        if ($dados['nome'] !== null && $dados['nome'] !== $this->userModel->getUserField($userId, 'nome')) {
+            // Atualiza nome se diferente
+            $usuarioAlterado = true;
+            $this->userModel->updateField($userId, 'nome', $dados['nome']);
+        }
+
+        if ($dados['email'] !== null && $dados['email'] !== $this->userModel->getUserField($userId, 'email')) {
+            // Atualiza o e-mail se diferente
+            $usuarioAlterado = true;
+            $this->userModel->updateField($userId, 'email', $dados['email']);
+        }
+
+        if ($dados['telefone'] !== null && $dados['telefone'] !== $this->userModel->getUserField($userId, 'telefone')) {
+            // Atualiza telefone se diferente
+            $usuarioAlterado = true;
+            $this->userModel->updateField($userId, 'telefone', $dados['telefone']);
+        }
+
+        if ($dados['sexo'] !== null && $dados['sexo'] !== $this->userModel->getUserField($userId, 'sexo')) {
+            // Atualiza sexo se diferente
+            $usuarioAlterado = true;
+            $this->userModel->updateField($userId, 'sexo', $dados['sexo']);
+        }
+
+        if ($foto && $foto['size'] > 0) {
             // Verifica se o tamanho da foto está dentro do limite (2MB)
             if ($foto['size'] > 2 * 1024 * 1024) { // Limite de 2MB
                 throw new Exception("O tamanho da foto não pode exceder 2MB.");
             }
+            
             // Verifica se o usuário já tem uma foto no banco
             $fotoAntiga = $this->userModel->getUserPhoto($userId);
         
             // Faz o upload da nova foto
             try {
                 $fotoNome = $this->uploadFoto($foto); // Agora com verificação de extensão e tipo
+                $usuarioAlterado = true;  // Marca que o usuário foi alterado
             } catch (Exception $e) {
                 // Lança a exceção com a mensagem de erro
                 throw new Exception("Erro ao fazer upload da foto: " . $e->getMessage());
@@ -38,6 +65,11 @@ class UserController {
             if ($fotoAntiga) {
                 $this->deleteOldPhoto($fotoAntiga);
             }
+        }
+
+        if (!$usuarioAlterado) {
+            // Se não houver nenhuma alteração, não faz nada
+            return;
         }
         
     }

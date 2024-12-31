@@ -41,6 +41,33 @@ class User {
         }
     }
 
+    // Método genérico para atualizar qualquer campo
+    public function updateField($userId, $campo, $valor) {
+        try {
+            $query = "UPDATE users SET $campo = :valor WHERE id = :id";
+            $stmt = $this->pdo->prepare($query);
+            $stmt->execute([
+                ':valor' => $valor,
+                ':id' => $userId
+            ]);
+        } catch (PDOException $e) {
+            throw new Exception("Erro ao atualizar o campo $campo: " . $e->getMessage());
+        }
+    }
+
+    // Método para obter o valor de um campo específico
+    public function getUserField($userId, $campo) {
+        try {
+            $query = "SELECT $campo FROM users WHERE id = :id";
+            $stmt = $this->pdo->prepare($query);
+            $stmt->execute([':id' => $userId]);
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $result ? $result[$campo] : null;
+        } catch (PDOException $e) {
+            throw new Exception("Erro ao buscar o campo $campo: " . $e->getMessage());
+        }
+    }
+
     // Método para obter a foto do usuário
     public function getUserPhoto($userId) {
         try {
