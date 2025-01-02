@@ -39,16 +39,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
     }
 
-    if (!$alterado || !$foto) {
+    if (!$alterado && (!isset($foto) || $foto['error'] !== UPLOAD_ERR_OK)) {
         echo "Nenhuma alteração detectada. Os dados atuais serão mantidos.";
         return;
-    }
+    }    
 
     // Edita o perfil
     try {
         $userController->editProfile($_SESSION['user_id'], $dados, $foto);
         echo "Perfil atualizado com sucesso!";
-        // header('Location: ../../frontend/pages/home.php');
+        header('Location: ../../backend/view/ListProfile.php');
     } catch (Exception $e) {
         throw new Exception("Erro ao atualizar o perfil: " . $e->getMessage());
     }
@@ -96,7 +96,6 @@ function formatarTelefone($telefone) {
                 <label for="foto" class="edit-photo-icon">
                     <i class="fas fa-pencil-alt"></i>
                 </label>
-                <input type="file" name="foto" id="foto" class="foto-input">
             </div>
 
             <!-- Nome e Telefone -->
@@ -111,31 +110,33 @@ function formatarTelefone($telefone) {
             <h1>Editar Perfil</h1>
 
             <form method="POST" enctype="multipart/form-data">
+                <!-- Campo escondido para chamar pelo JS ao clicar na foto de perfil -->
+                <input type="file" name="foto" id="foto" style="display: none;">
+
+                <!-- Edição do nome -->
                 <label for="nome_completo">Nome Completo:</label>
                 <input type="text" name="nome_completo" id="nome_completo" value="<?php echo htmlspecialchars($userData['nome']); ?>" required>
 
+                <!-- Edição do email -->
                 <label for="email">E-mail:</label>
                 <input type="email" name="email" id="email" value="<?php echo htmlspecialchars($userData['email']); ?>" required>
 
+                <!-- Edição do telefone -->
                 <label for="telefone">Telefone:</label>
                 <input type="text" name="telefone" id="telefone" value="<?php echo htmlspecialchars($userData['telefone']); ?>" required>
 
-                <label for="sexo">Sexo:</label>
+                <!-- Edição do gênero -->
+                <label for="sexo">Gênero:</label>
                 <select name="sexo" id="sexo">
                     <option value="masculino" <?php echo $userData['sexo'] == 'masculino' ? 'selected' : ''; ?>>Masculino</option>
                     <option value="feminino" <?php echo $userData['sexo'] == 'feminino' ? 'selected' : ''; ?>>Feminino</option>
                     <option value="outro" <?php echo $userData['sexo'] == 'outro' ? 'selected' : ''; ?>>Outro</option>
                 </select>
-
+                
                 <button type="submit">Salvar Alterações</button>
             </form>
         </div>
     </div>
-    <script>
-        // Script para permitir a troca de foto ao clicar no ícone
-        document.querySelector('.edit-photo-icon').addEventListener('click', function() {
-            document.getElementById('foto').click();  // Abre o campo de upload de foto
-        });
-    </script>
+    <script src="../../frontend/js/uploadFoto.js"></script>
 </body>
 </html>
