@@ -7,7 +7,8 @@ CREATE TABLE users
     telefone BIGINT NOT NULL,
     email VARCHAR(255) NOT NULL UNIQUE,
     senha VARCHAR(255) NOT NULL,
-    sexo VARCHAR(10) NOT NULL
+    sexo VARCHAR(10) NOT NULL,
+    foto VARCHAR(225)
 );
 
 CREATE TABLE address (
