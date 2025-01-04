@@ -40,6 +40,12 @@ $fotoPerfilPath = $fotoPerfil ? "../../uploads/{$fotoPerfil}" : "../../frontend/
             <span>Endereços</span>
         </a>
 
+        <!-- Chat -->
+        <a href="/chat" class="chat">
+            <i class="fas fa-comment-alt"></i>
+            <span>Chats</span>
+        </a>
+
         <!-- Barra de pesquisa -->
         <div class="search-container">
             <input type="text" class="search-bar" placeholder="Buscar serviços, profissionais e mais...">
@@ -54,16 +60,16 @@ $fotoPerfilPath = $fotoPerfil ? "../../uploads/{$fotoPerfil}" : "../../frontend/
             <span class="profile-name"><?php echo htmlspecialchars($primeiroNome[0]); ?></span>
         </a>
 
-        <!-- Chat -->
-        <a href="/chat" class="chat">
-            <i class="fas fa-comment-alt"></i>
-            <span>Chats</span>
-        </a>
-
         <!-- Favoritos -->
         <a href="/favoritos" class="favorites">
             <i class="fas fa-star"></i>
             <span>Favoritos</span>
+        </a>
+
+        <!-- Botão de Logout -->
+        <a href="../../backend/logout.php" class="logout">
+            <i class="fas fa-sign-out-alt"></i>
+            <span>Sair</span>
         </a>
     </header>
 </head>
