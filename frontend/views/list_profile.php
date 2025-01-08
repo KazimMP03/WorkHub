@@ -48,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     try {
         $userController->editProfile($_SESSION['user_id'], $dados, $foto);
         echo "Perfil atualizado com sucesso!";
-        header('Location: ../../backend/views/list_profile.php');
+        header('Location: ../../frontend/views/list_profile.php');
     } catch (Exception $e) {
         throw new Exception("Erro ao atualizar o perfil: " . $e->getMessage());
     }
