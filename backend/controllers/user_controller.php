@@ -1,7 +1,7 @@
 <?php
 // Inclui a configuração do banco de dados e o modelo de usuário
-require_once '../config/db.php';
-require_once '../models/User.php';
+require_once '../../backend/config/database.php';
+require_once '../../backend/models/user.php';
 
 class UserController {
     private $userModel; // Armazena a instância do modelo de usuário

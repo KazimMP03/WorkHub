@@ -8,8 +8,8 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 // Inclui a conexão com o banco de dados e o modelo Address
-require_once '../config/db.php';
-require_once '../models/Address.php';
+require_once '../../backend/config/database.php';
+require_once '../../backend/models/address.php';
 
 $userId = $_SESSION['user_id']; // Obtém o ID do usuário logado
 
@@ -30,7 +30,7 @@ try {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meus Endereços</title>
-    <link rel="stylesheet" href="../../frontend/css/listAddress.css">
+    <link rel="stylesheet" href="../../frontend/css/list_address.css">
 </head>
 <body>
     <!-- Header -->
@@ -41,7 +41,7 @@ try {
     <!-- Botão de Adicionar Endereço como o primeiro cartão -->
     <div class="address-list">
         <div class="address-item add-address-card">
-            <a href="../../frontend/pages/registerAddress.html">
+            <a href="../../frontend/pages/register_address.html">
                 <button>
                     <i class="fas fa-plus plus-icon"></i> Adicionar endereço
                 </button>

@@ -6,8 +6,8 @@ if (!isset($_SESSION['user_id'])) {
     exit();
 }
 
-require_once '../../backend/config/db.php';
-require_once '../../backend/controllers/UserController.php';
+require_once '../../backend/config/database.php';
+require_once '../../backend/controllers/user_controller.php';
 
 $userController = new UserController($pdo);
 
@@ -78,7 +78,7 @@ function formatarTelefone($telefone) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Perfil</title>
-    <link rel="stylesheet" href="../../frontend/css/listProfile.css">
+    <link rel="stylesheet" href="../../frontend/css/list_profile.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Font Awesome -->
 </head>
 <body>
@@ -137,6 +137,6 @@ function formatarTelefone($telefone) {
             </form>
         </div>
     </div>
-    <script src="../../frontend/js/uploadFoto.js"></script>
+    <script src="../../frontend/js/upload_foto.js"></script>
 </body>
 </html>

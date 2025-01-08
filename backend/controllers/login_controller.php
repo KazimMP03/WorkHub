@@ -1,6 +1,6 @@
 <?php
 // Inclui o arquivo de configuração do banco de dados
-require_once '../../backend/config/db.php';
+require_once '../../backend/config/database.php';
 
 class LoginController {
     private $pdo; // Variável $pdo que irá armazenar a conexão com o banco de dados

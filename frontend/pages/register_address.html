@@ -16,7 +16,7 @@
         <div class="lado-direito">
             <h1>Cadastro de Endereço</h1>
             <h2>Insira seu endereço completo</h2>
-            <form action="../../backend/controllers/AddressController.php" method="POST" onsubmit="limparDados()">
+            <form action="../../backend/controllers/address_controller.php" method="POST" onsubmit="limparDados()">
                 <div>
                     <input type="text" name="cep" id="cep" placeholder="CEP" maxlength="9" onkeyup="mascaraCEP()" required>
                 </div>
@@ -38,6 +38,6 @@
     </div>
     <!-- Chama o JS dá API - viaCEP -->
     <!-- Fica no final do body, pois o elemento com ID 'cep' não tinha sido carregado ainda -->
-    <script src="../js/viaCEP.js"></script>
+    <script src="../js/via_CEP.js"></script>
 </body>
 </html>
