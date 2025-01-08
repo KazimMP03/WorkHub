@@ -11,7 +11,7 @@ $nomeCompleto = $_SESSION['user_name'];
 $primeiroNome = explode(' ', $nomeCompleto);
 
 // Conecta ao banco para pegar a foto do perfil do usuário
-require_once '../../backend/config/db.php';
+require_once '../../backend/config/database.php';
 
 // Prepara a consulta para pegar a foto de perfil do usuário
 $query = "SELECT foto FROM users WHERE id = :user_id";
@@ -20,7 +20,7 @@ $stmt->execute([':user_id' => $_SESSION['user_id']]);
 $fotoPerfil = $stmt->fetchColumn();
 
 // Define a foto de perfil padrão caso o usuário não tenha uma
-$fotoPerfilPath = $fotoPerfil ? "../../uploads/{$fotoPerfil}" : "../../frontend/img/default-profile.png";
+$fotoPerfilPath = $fotoPerfil ? "../../uploads/{$fotoPerfil}" : "../../frontend/assets/images/logo.png";
 ?>
 <head>
     <!-- Link para os ícones -->
@@ -30,12 +30,12 @@ $fotoPerfilPath = $fotoPerfil ? "../../uploads/{$fotoPerfil}" : "../../frontend/
         <!-- Logo -->
         <div class="logo">
             <a href="../../frontend/pages/home.php">
-                <img src="../../frontend/img/logo.png" alt="logo">
+                <img src="../../frontend/assets/images/logo.png" alt="logo">
             </a>
         </div>
 
         <!-- Endereços -->
-        <a href="../../backend/view/ListAddress.php" class="address">
+        <a href="../../frontend/views/list_address.php" class="address">
             <i class="fas fa-map-marker-alt"></i>
             <span>Endereços</span>
         </a>
@@ -55,7 +55,7 @@ $fotoPerfilPath = $fotoPerfil ? "../../uploads/{$fotoPerfil}" : "../../frontend/
         </div>
 
         <!-- Perfil -->
-        <a href="../../backend/view/ListProfile.php" class="profile">
+        <a href="../../frontend/views/list_profile.php" class="profile">
             <img src="<?php echo $fotoPerfilPath; ?>" alt="Foto do Usuário" class="profile-img"/>
             <span class="profile-name"><?php echo htmlspecialchars($primeiroNome[0]); ?></span>
         </a>

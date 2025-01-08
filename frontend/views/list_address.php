@@ -30,7 +30,7 @@ try {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meus Endereços</title>
-    <link rel="stylesheet" href="../../frontend/css/list_address.css">
+    <link rel="stylesheet" href="../../frontend/assets/css/list_address.css">
 </head>
 <body>
     <!-- Header -->

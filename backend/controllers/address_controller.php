@@ -21,7 +21,7 @@ class AddressController {
             $this->addressModel->linkToUser($userId, $addressId);
 
             // Redireciona para a página de sucesso ou home
-            header('Location: ../../frontend/view/ListAddress.php');
+            header('Location: ../../frontend/views/ListAddress.php');
             exit(); // Garante que o código pare após o redirecionamento
         } catch (Exception $e) {
             // Exibe a mensagem de erro caso algo dê errado

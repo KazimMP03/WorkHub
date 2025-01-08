@@ -48,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     try {
         $userController->editProfile($_SESSION['user_id'], $dados, $foto);
         echo "Perfil atualizado com sucesso!";
-        header('Location: ../../backend/view/ListProfile.php');
+        header('Location: ../../backend/views/list_profile.php');
     } catch (Exception $e) {
         throw new Exception("Erro ao atualizar o perfil: " . $e->getMessage());
     }
@@ -78,7 +78,7 @@ function formatarTelefone($telefone) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Perfil</title>
-    <link rel="stylesheet" href="../../frontend/css/list_profile.css">
+    <link rel="stylesheet" href="../../frontend/assets/css/list_profile.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Font Awesome -->
 </head>
 <body>
