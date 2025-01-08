@@ -1,7 +1,7 @@
 <?php
 // Inclui a configuração do banco de dados e o modelo de endereço
-require_once '../config/db.php';
-require_once '../models/Address.php'; // Modelo responsável por manipular endereços
+require_once '../../backend/config/database.php';
+require_once '../../frontend/models/Address.php'; // Modelo responsável por manipular endereços
 
 class AddressController {
     private $addressModel; // Armazena a instância do modelo de endereço
@@ -21,7 +21,7 @@ class AddressController {
             $this->addressModel->linkToUser($userId, $addressId);
 
             // Redireciona para a página de sucesso ou home
-            header('Location: ../../backend/view/ListAddress.php');
+            header('Location: ../../frontend/view/ListAddress.php');
             exit(); // Garante que o código pare após o redirecionamento
         } catch (Exception $e) {
             // Exibe a mensagem de erro caso algo dê errado
