@@ -399,3 +399,6 @@ FodyWeavers.xsd
 
 # Ignora a pasta uploads
 /uploads/
+
+# Igonra a o arquivo config.php
+backend/config/config.php
