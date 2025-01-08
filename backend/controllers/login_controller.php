@@ -58,9 +58,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $senha = $_POST['senha']; // Obtém a senha enviada pelo formulário
 
     // Instancia o controlador de login
-    $loginController = new LoginController($pdo);
+    $login_controller = new LoginController($pdo);
 
     // Chama o método de login
-    $loginController->login($email, $senha);
+    $login_controller->login($email, $senha);
 }
 ?>

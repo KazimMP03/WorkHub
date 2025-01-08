@@ -12,12 +12,12 @@ class User {
     public function create($dados) {
         try {
             // Verifica se o e-mail já está cadastrado
-            if ($this->emailExists($dados['email'])) {
+            if ($this->email_exists($dados['email'])) {
                 throw new Exception("O e-mail informado já está cadastrado.");
             }
 
             // Verifica se o CPF já está cadastrado
-            if ($this->cpfExists($dados['cpf'])) {
+            if ($this->cpf_exists($dados['cpf'])) {
                 throw new Exception("O CPF informado já está cadastrado.");
             }
 
@@ -42,13 +42,13 @@ class User {
     }
 
     // Método genérico para atualizar qualquer campo
-    public function updateField($userId, $campo, $valor) {
+    public function update_field($user_id, $campo, $valor) {
         try {
             $query = "UPDATE users SET $campo = :valor WHERE id = :id";
             $stmt = $this->pdo->prepare($query);
             $stmt->execute([
                 ':valor' => $valor,
-                ':id' => $userId
+                ':id' => $user_id
             ]);
         } catch (PDOException $e) {
             throw new Exception("Erro ao atualizar o campo $campo: " . $e->getMessage());
@@ -56,11 +56,11 @@ class User {
     }
 
     // Método para obter o valor de um campo específico
-    public function getUserField($userId, $campo) {
+    public function get_user_field($user_id, $campo) {
         try {
             $query = "SELECT $campo FROM users WHERE id = :id";
             $stmt = $this->pdo->prepare($query);
-            $stmt->execute([':id' => $userId]);
+            $stmt->execute([':id' => $user_id]);
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
             return $result ? $result[$campo] : null;
         } catch (PDOException $e) {
@@ -69,12 +69,12 @@ class User {
     }
 
     // Método para obter a foto do usuário
-    public function getUserPhoto($userId) {
+    public function get_user_photo($user_id) {
         try {
             // Prepara a query SQL para pegar a foto do usuário
             $query = "SELECT foto FROM users WHERE id = :id";
             $stmt = $this->pdo->prepare($query);
-            $stmt->execute([':id' => $userId]);
+            $stmt->execute([':id' => $user_id]);
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
             return $result ? $result['foto'] : null; // Retorna o nome da foto ou null se não existir
         } catch (PDOException $e) {
@@ -82,14 +82,14 @@ class User {
         }
     }
 
-    public function updatePhoto($userId, $foto) {
+    public function update_photo($user_id, $foto) {
         try {
             // Prepara a query SQL para atualizar a foto de perfil
             $query = "UPDATE users SET foto = :foto WHERE id = :id";
             $stmt = $this->pdo->prepare($query);
             $stmt->execute([
                 ':foto' => $foto,
-                ':id' => $userId
+                ':id' => $user_id
             ]);
             // Retorna true se a atualização for bem-sucedida
             return true;
@@ -99,7 +99,7 @@ class User {
     }
 
     // Método para verificar se um email já existe no BD
-    public function emailExists($email) {
+    public function email_exists($email) {
         try {
             // Prepara a query SQL para verificar se o e-mail já está cadastrado
             $query = "SELECT 1 FROM users WHERE email = :email LIMIT 1";
@@ -112,7 +112,7 @@ class User {
     }
 
     // Método para verificar se o CPF já existe no banco de dados
-    public function cpfExists($cpf) {
+    public function cpf_exists($cpf) {
         try {
             // Prepara a query SQL para verificar se o CPF já está cadastrado
             $query = "SELECT 1 FROM users WHERE cpf = :cpf LIMIT 1";

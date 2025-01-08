@@ -5,7 +5,7 @@ session_start();
 // Definição da classe Cadastro, responsável por gerenciar o cadastro do usuário
 class Cadastro {
     // Método que salva o nome e o sobrenome na sessão e redireciona para a próxima etapa
-    public function saveStep1($nome, $sobrenome) {
+    public function save_step1($nome, $sobrenome) {
         // Armazena o nome e o sobrenome na sessão
         $_SESSION['nome'] = $nome;
         $_SESSION['sobrenome'] = $sobrenome;
@@ -15,9 +15,9 @@ class Cadastro {
     }
 
     // Método que salva a data de nascimento e o sexo na sessão e redireciona para a próxima etapa
-    public function saveStep2($dataNascimento, $sexo) {
+    public function save_step2($data_nascimento, $sexo) {
         // Armazena a data de nascimento e o sexo na sessão
-        $_SESSION['data_nascimento'] = $dataNascimento;
+        $_SESSION['data_nascimento'] = $data_nascimento;
         $_SESSION['sexo'] = $sexo;
         // Redireciona para a próxima página do cadastro
         header('Location: ../../frontend/pages/cadastro3.html');
@@ -25,7 +25,7 @@ class Cadastro {
     }
 
     // Método que salva o CPF e o telefone na sessão e redireciona para a próxima etapa
-    public function saveStep3($cpf, $telefone) {
+    public function save_step3($cpf, $telefone) {
         // Armazena o CPF e o telefone na sessão
         $_SESSION['cpf'] = $cpf;
         $_SESSION['telefone'] = $telefone;
@@ -35,7 +35,7 @@ class Cadastro {
     }
 
     // Método que salva o email e a senha na sessão e redireciona para o backend processar o registro
-    public function saveStep4($email, $senha) {
+    public function save_step4($email, $senha) {
         // Salva o email e a senha na sessão
         $_SESSION['email'] = $email;
         $_SESSION['senha'] = $senha; // Aqui seria interessante aplicar criptografia na senha
@@ -64,24 +64,24 @@ $telefone = $_POST['telefone'];
 $email = $_POST['email'];
 $senha = $_POST['senha'];
 
-// Verifica se o nome e sobrenome foram preenchidos e chama o método saveStep1 para armazená-los na sessão
+// Verifica se o nome e sobrenome foram preenchidos e chama o método save_step1 para armazená-los na sessão
 if ($nome && $sobrenome) {
-    $cadastro->saveStep1($nome, $sobrenome);
+    $cadastro->save_step1($nome, $sobrenome);
 }
 
-// Verifica se a data de nascimento e o sexo foram preenchidos e chama o método saveStep2 para armazená-los na sessão
+// Verifica se a data de nascimento e o sexo foram preenchidos e chama o método save_step2 para armazená-los na sessão
 if ($data_nascimento && $sexo) {
-    $cadastro->saveStep2($data_nascimento, $sexo);
+    $cadastro->save_step2($data_nascimento, $sexo);
 }
 
-// Verifica se o CPF e o telefone foram preenchidos e chama o método saveStep3 para armazená-los na sessão
+// Verifica se o CPF e o telefone foram preenchidos e chama o método save_step3 para armazená-los na sessão
 if ($cpf && $telefone) {
-    $cadastro->saveStep3($cpf, $telefone);
+    $cadastro->save_step3($cpf, $telefone);
 }
 
-// Verifica se o email e a senha foram preenchidos e chama o método saveStep4 para armazená-los na sessão
+// Verifica se o email e a senha foram preenchidos e chama o método save_step4 para armazená-los na sessão
 if ($email && $senha) {
-    $cadastro->saveStep4($email, $senha);
+    $cadastro->save_step4($email, $senha);
 }
 
 // Se algum dado obrigatório não foi preenchido, exibe uma mensagem de erro e interrompe o processo

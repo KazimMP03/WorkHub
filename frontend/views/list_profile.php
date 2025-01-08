@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Edita o perfil
     try {
-        $userController->editProfile($_SESSION['user_id'], $dados, $foto);
+        $userController->edit_profile($_SESSION['user_id'], $dados, $foto);
         echo "Perfil atualizado com sucesso!";
         header('Location: ../../frontend/views/list_profile.php');
     } catch (Exception $e) {
@@ -56,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 // Função para formatar o número de telefone
 // Necessário para aplicar a máscara para exibir para o usuário
-function formatarTelefone($telefone) {
+function formatar_telefone($telefone) {
     // Remove todos os caracteres não numéricos
     $telefone = preg_replace('/[^0-9]/', '', $telefone);
     
@@ -101,7 +101,7 @@ function formatarTelefone($telefone) {
             <!-- Nome e Telefone -->
             <div class="profile-info">
                 <p class="p-nome"><?php echo htmlspecialchars($userData['nome']); ?></p>
-                <p><?php echo htmlspecialchars(formatarTelefone($userData['telefone'])); ?></p>
+                <p><?php echo htmlspecialchars(formatar_telefone($userData['telefone'])); ?></p>
             </div>
         </div>
 

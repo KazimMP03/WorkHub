@@ -33,14 +33,14 @@ class Address {
     }
 
     // Método responsável por vincular o endereço a um usuário específico
-    public function linkToUser($userId, $addressId) {
+    public function link_to_user($user_id, $address_id) {
         try {
             // Prepara a query SQL para vincular o endereço ao usuário
             $query = "INSERT INTO user_address (user_id, address_id) VALUES (:user_id, :address_id)";
             $stmt = $this->pdo->prepare($query); // Prepara a consulta
             $stmt->execute([ // Executa a consulta passando o ID do usuário e o ID do endereço
-                ':user_id' => $userId,
-                ':address_id' => $addressId
+                ':user_id' => $user_id,
+                ':address_id' => $address_id
             ]);
         } catch (PDOException $e) {
             // Se ocorrer algum erro, lança uma exceção com a mensagem do erro
@@ -48,7 +48,8 @@ class Address {
         }
     }
 
-    public function getAddressesByUserId($userId) {
+    // Método responsável por obter os endereços de um usuário específico
+    public function get_addresses_by_user_id($user_id) {
         // SQL com os ajustes feitos para refletir as mudanças
         $sql = "SELECT address.* 
                 FROM address
@@ -57,14 +58,11 @@ class Address {
     
         // Preparando e executando a consulta
         $stmt = $this->pdo->prepare($sql);
-        $stmt->bindParam(':user_id', $userId, PDO::PARAM_INT);
+        $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
         $stmt->execute();
     
         // Retorna todos os endereços associados ao usuário
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
-    
-    
 }
 ?>
-

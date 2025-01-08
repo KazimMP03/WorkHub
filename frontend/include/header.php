@@ -7,8 +7,8 @@ if (!isset($_SESSION['user_name']) || !isset($_SESSION['user_id'])) {
 }
 
 // Busca o primeiro nome do usuário
-$nomeCompleto = $_SESSION['user_name'];
-$primeiroNome = explode(' ', $nomeCompleto);
+$nome_completo = $_SESSION['user_name'];
+$primeiro_nome = explode(' ', $nome_completo);
 
 // Conecta ao banco para pegar a foto do perfil do usuário
 require_once '../../backend/config/database.php';
@@ -17,10 +17,10 @@ require_once '../../backend/config/database.php';
 $query = "SELECT foto FROM users WHERE id = :user_id";
 $stmt = $pdo->prepare($query);
 $stmt->execute([':user_id' => $_SESSION['user_id']]);
-$fotoPerfil = $stmt->fetchColumn();
+$foto_perfil = $stmt->fetchColumn();
 
 // Define a foto de perfil padrão caso o usuário não tenha uma
-$fotoPerfilPath = $fotoPerfil ? "../../uploads/{$fotoPerfil}" : "../../frontend/assets/images/logo.png";
+$foto_perfil_path = $foto_perfil ? "../../uploads/{$foto_perfil}" : "../../frontend/assets/images/logo.png";
 ?>
 <head>
     <!-- Link para os ícones -->
@@ -56,8 +56,8 @@ $fotoPerfilPath = $fotoPerfil ? "../../uploads/{$fotoPerfil}" : "../../frontend/
 
         <!-- Perfil -->
         <a href="../../frontend/views/list_profile.php" class="profile">
-            <img src="<?php echo $fotoPerfilPath; ?>" alt="Foto do Usuário" class="profile-img"/>
-            <span class="profile-name"><?php echo htmlspecialchars($primeiroNome[0]); ?></span>
+            <img src="<?php echo $foto_perfil_path; ?>" alt="Foto do Usuário" class="profile-img"/>
+            <span class="profile-name"><?php echo htmlspecialchars($primeiro_nome[0]); ?></span>
         </a>
 
         <!-- Favoritos -->

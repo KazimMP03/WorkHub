@@ -11,14 +11,14 @@ if (!isset($_SESSION['user_id'])) {
 require_once '../../backend/config/database.php';
 require_once '../../backend/models/address.php';
 
-$userId = $_SESSION['user_id']; // Obtém o ID do usuário logado
+$user_id = $_SESSION['user_id']; // Obtém o ID do usuário logado
 
 try {
     // Cria uma instância do modelo Address
-    $addressModel = new Address($pdo);
+    $address_model = new Address($pdo);
 
     // Busca os endereços do usuário logado
-    $addresses = $addressModel->getAddressesByUserId($userId);
+    $addresses = $address_model->get_addresses_by_user_id($user_id);
 } catch (Exception $e) {
     die("Erro ao carregar endereços: " . $e->getMessage());
 }
@@ -34,7 +34,7 @@ try {
 </head>
 <body>
     <!-- Header -->
-    <?php include '../../frontend/include/header.php';?>
+    <?php include '../../frontend/include/header.php'; ?>
 
     <h2>Meus Endereços</h2>
 
