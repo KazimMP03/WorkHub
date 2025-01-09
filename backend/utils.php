@@ -16,14 +16,6 @@ function iniciar_sessao() {
     }
 }
 
-// Função genérica para exibir mensagens de erro como alert
-function alert_message($mensagem) {
-    echo "<script> 
-            alert('" . addslashes($mensagem) . "');
-          </script>";
-    exit();
-}
-
 function redirect_with_alert($mensagem, $caminho) {
     echo "<script>
             alert('" . addslashes($mensagem) . "');

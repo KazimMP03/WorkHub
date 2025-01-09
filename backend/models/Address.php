@@ -30,8 +30,7 @@ class Address {
             // Retorna o ID do endereço recém-criado, gerado automaticamente pelo banco
             return $this->pdo->lastInsertId();
         } catch (PDOException $e) {
-            // Exibe um alerta com a mensagem do erro
-            alert_message("Erro ao registrar o endereço: " . $e->getMessage());
+            redirect_with_alert("Erro ao registrar o endereço: " . $e->getMessage(), '../../frontend/pages/register_address.html');
         }
     }
 
@@ -46,8 +45,7 @@ class Address {
                 ':address_id' => $address_id
             ]);
         } catch (PDOException $e) {
-            // Exibe um alerta com a mensagem do erro
-            alert_message("Erro ao vincular o endereço ao usuário: " . $e->getMessage());
+            redirect_with_alert("Erro ao vincular o endereço ao usuário: " . $e->getMessage(), '../../frontend/pages/register_address.html');
         }
     }
 
@@ -68,8 +66,7 @@ class Address {
             // Retorna todos os endereços associados ao usuário
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
-            // Exibe um alerta com a mensagem do erro
-            alert_message("Erro ao buscar os endereços do usuário: " . $e->getMessage());
+            redirect_with_alert("Erro ao buscar os endereços do usuário: " . $e->getMessage(), '../../frontend/pages/register_address.html');
         }
     }
 }
