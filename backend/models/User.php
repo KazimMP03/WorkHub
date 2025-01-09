@@ -16,12 +16,12 @@ class User {
         try {
             // Verifica se o e-mail já está cadastrado
             if ($this->email_exists($dados['email'])) {
-                alert_message('O e-mail informado já está cadastrado.');
+                redirect_with_alert('O e-mail informado já está cadastrado.', '../../frontend/pages/cadastro1.html');
             }
 
             // Verifica se o CPF já está cadastrado
             if ($this->cpf_exists($dados['cpf'])) {
-                alert_message('O CPF informado já está cadastrado.');
+                redirect_with_alert('O CPF informado já está cadastrado.', '../../frontend/pages/cadastro1.html');
             }
 
             // Prepara a query SQL para inserir um novo usuário
@@ -39,8 +39,7 @@ class User {
             ]);
             return true; // Retorna true caso a inserção seja bem-sucedida
         } catch (PDOException $e) {
-            // Exibe um alerta com a mensagem do erro
-            alert_message("Erro ao registrar o usuário: " . $e->getMessage());
+            redirect_with_alert('Erro ao registrar o usuário: ' . $e->getMessage(), '../../frontend/pages/cadastro1.html');
         }
     }
 
@@ -54,8 +53,7 @@ class User {
                 ':id' => $user_id
             ]);
         } catch (PDOException $e) {
-            // Exibe um alerta com a mensagem do erro
-            alert_message("Erro ao atualizar o campo $campo: " . $e->getMessage());
+            redirect_with_alert("Erro ao atualizar o campo $campo: " . $e->getMessage(), '../../frontend/views/list_profile.php');
         }
     }
 
@@ -68,8 +66,7 @@ class User {
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
             return $result ? $result[$campo] : null;
         } catch (PDOException $e) {
-            // Exibe um alerta com a mensagem do erro
-            alert_message("Erro ao buscar o campo $campo: " . $e->getMessage());
+            redirect_with_alert("Erro ao buscar o campo $campo: " . $e->getMessage(), '../../frontend/views/list_profile.php');
         }
     }
 
@@ -83,8 +80,7 @@ class User {
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
             return $result ? $result['foto'] : null; // Retorna o nome da foto ou null se não existir
         } catch (PDOException $e) {
-            // Exibe um alerta com a mensagem do erro
-            alert_message("Erro ao buscar foto do usuário: " . $e->getMessage());
+            redirect_with_alert("Erro ao buscar a foto: " . $e->getMessage(), '../../frontend/views/list_profile.php');
         }
     }
 
@@ -100,8 +96,7 @@ class User {
             // Retorna true se a atualização for bem-sucedida
             return true;
         } catch (PDOException $e) {
-            // Exibe um alerta com a mensagem do erro
-            alert_message("Erro ao atualizar a foto: " . $e->getMessage());
+            redirect_with_alert("Erro ao atualizar a foto: " . $e->getMessage(), '../../frontend/views/list_profile.php');
         }
     }
 
@@ -114,8 +109,7 @@ class User {
             $stmt->execute([':email' => $email]); // Executa a consulta passando o e-mail
             return $stmt->fetchColumn(); // Retorna true se o e-mail existir, caso contrário, false
         } catch (PDOException $e) {
-            // Exibe um alerta com a mensagem do erro
-            alert_message("Erro ao verificar o e-mail: " . $e->getMessage());
+            redirect_with_alert("Erro ao verificar o e-mail: " . $e->getMessage(), '../../frontend/pages/cadastro1.html');
         }
     }
 
@@ -128,8 +122,7 @@ class User {
             $stmt->execute([':cpf' => $cpf]); // Passa o valor de :cpf corretamente
             return $stmt->fetchColumn(); // Retorna true se o CPF existir, caso contrário, false
         } catch (PDOException $e) {
-            // Exibe um alerta com a mensagem do erro
-            alert_message("Erro ao verificar o CPF: " . $e->getMessage());
+            redirect_with_alert("Erro ao verificar o CPF: " . $e->getMessage(), '../../frontend/pages/cadastro1.html');
         }
     }
 }
