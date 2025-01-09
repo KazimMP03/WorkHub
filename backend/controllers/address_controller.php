@@ -24,8 +24,7 @@ class AddressController {
             header('Location: ../../frontend/views/list_address.php');
             exit(); // Garante que o código pare após o redirecionamento
         } catch (Exception $e) {
-            // Exibe a mensagem de erro caso algo dê errado
-            echo $e->getMessage();
+            redirect_with_alert('Erro ao registrar endereço: ' . addslashes($e->getMessage()), '../../frontend/views/list_profile.php');
         }
     }
 }
@@ -35,9 +34,7 @@ session_start();
 
 // Verifica se o ID do usuário está presente na sessão
 if (!isset($_SESSION['user_id'])) {
-    // Exibe erro caso o ID do usuário não esteja na sessão
-    echo "Erro: ID do usuário não encontrado na sessão!";
-    exit();
+    redirect_with_alert('Erro: ID do usuário não encontrado na sessão!', '../../frontend/pages/register_address.html');
 }
 
 // Recupera o ID do usuário da sessão

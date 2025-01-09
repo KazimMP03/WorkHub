@@ -1,4 +1,7 @@
 <?php
+// Incluir o arquivo utils.php para usar a função alert_message
+include_once '../../backend/utils.php'; // Ajuste o caminho conforme necessário
+
 // Classe responsável pelas operações relacionadas a usuários (criação)
 class User {
     private $pdo; // Armazena a instância de PDO para comunicação com o banco de dados
@@ -13,12 +16,12 @@ class User {
         try {
             // Verifica se o e-mail já está cadastrado
             if ($this->email_exists($dados['email'])) {
-                throw new Exception("O e-mail informado já está cadastrado.");
+                alert_message('O e-mail informado já está cadastrado.');
             }
 
             // Verifica se o CPF já está cadastrado
             if ($this->cpf_exists($dados['cpf'])) {
-                throw new Exception("O CPF informado já está cadastrado.");
+                alert_message('O CPF informado já está cadastrado.');
             }
 
             // Prepara a query SQL para inserir um novo usuário
@@ -36,8 +39,8 @@ class User {
             ]);
             return true; // Retorna true caso a inserção seja bem-sucedida
         } catch (PDOException $e) {
-            // Se ocorrer algum erro, lança uma exceção com a mensagem do erro
-            throw new Exception("Erro ao registrar o usuário: " . $e->getMessage());
+            // Exibe um alerta com a mensagem do erro
+            alert_message("Erro ao registrar o usuário: " . $e->getMessage());
         }
     }
 
@@ -51,7 +54,8 @@ class User {
                 ':id' => $user_id
             ]);
         } catch (PDOException $e) {
-            throw new Exception("Erro ao atualizar o campo $campo: " . $e->getMessage());
+            // Exibe um alerta com a mensagem do erro
+            alert_message("Erro ao atualizar o campo $campo: " . $e->getMessage());
         }
     }
 
@@ -64,7 +68,8 @@ class User {
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
             return $result ? $result[$campo] : null;
         } catch (PDOException $e) {
-            throw new Exception("Erro ao buscar o campo $campo: " . $e->getMessage());
+            // Exibe um alerta com a mensagem do erro
+            alert_message("Erro ao buscar o campo $campo: " . $e->getMessage());
         }
     }
 
@@ -78,7 +83,8 @@ class User {
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
             return $result ? $result['foto'] : null; // Retorna o nome da foto ou null se não existir
         } catch (PDOException $e) {
-            throw new Exception("Erro ao buscar foto do usuário: " . $e->getMessage());
+            // Exibe um alerta com a mensagem do erro
+            alert_message("Erro ao buscar foto do usuário: " . $e->getMessage());
         }
     }
 
@@ -94,7 +100,8 @@ class User {
             // Retorna true se a atualização for bem-sucedida
             return true;
         } catch (PDOException $e) {
-            throw new Exception("Erro ao atualizar a foto: " . $e->getMessage());
+            // Exibe um alerta com a mensagem do erro
+            alert_message("Erro ao atualizar a foto: " . $e->getMessage());
         }
     }
 
@@ -107,7 +114,8 @@ class User {
             $stmt->execute([':email' => $email]); // Executa a consulta passando o e-mail
             return $stmt->fetchColumn(); // Retorna true se o e-mail existir, caso contrário, false
         } catch (PDOException $e) {
-            throw new Exception("Erro ao verificar o e-mail: " . $e->getMessage());
+            // Exibe um alerta com a mensagem do erro
+            alert_message("Erro ao verificar o e-mail: " . $e->getMessage());
         }
     }
 
@@ -120,7 +128,8 @@ class User {
             $stmt->execute([':cpf' => $cpf]); // Passa o valor de :cpf corretamente
             return $stmt->fetchColumn(); // Retorna true se o CPF existir, caso contrário, false
         } catch (PDOException $e) {
-            throw new Exception("Erro ao verificar o CPF: " . $e->getMessage());
+            // Exibe um alerta com a mensagem do erro
+            alert_message("Erro ao verificar o CPF: " . $e->getMessage());
         }
     }
 }

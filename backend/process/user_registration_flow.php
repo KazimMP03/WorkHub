@@ -1,4 +1,7 @@
 <?php
+// Inclui o utils.php
+require_once '../../backend/utils.php';
+
 // Inicia a sessão para armazenar temporariamente as informações fornecidas pelo usuário durante o cadastro
 session_start();
 
@@ -47,8 +50,7 @@ class Cadastro {
 
 // Verifica se a requisição é do tipo POST. Se não for, exibe uma mensagem de erro e interrompe o processo
 if ($_SERVER['REQUEST_METHOD'] != 'POST') {
-    echo "Erro: Acesso inválido!"; // Informa que a requisição não é válida
-    exit(); // Interrompe a execução do código
+    redirect_with_alert('Erro: Acesso inválido!', '../../frontend/pages/cadastro1.html');
 }
 
 // Instancia um objeto da classe Cadastro
@@ -86,7 +88,6 @@ if ($email && $senha) {
 
 // Se algum dado obrigatório não foi preenchido, exibe uma mensagem de erro e interrompe o processo
 if (!isset($nome, $sobrenome, $data_nascimento, $sexo, $cpf, $telefone, $email, $senha)) {
-    echo "Erro: Dados incompletos!"; // Mensagem indicando que os dados não estão completos
-    exit(); // Interrompe a execução do código
+    redirect_with_alert('Erro: Dados incompletos!', '../../frontend/pages/cadastro1.html');
 } 
 ?>

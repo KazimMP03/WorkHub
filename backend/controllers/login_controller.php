@@ -1,6 +1,7 @@
 <?php
-// Inclui o arquivo de configuração do banco de dados
+// Inclui o arquivo de configuração do banco de dados e utils.php
 require_once '../../backend/config/database.php';
+require_once '../../backend/utils.php';
 
 class LoginController {
     private $pdo; // Variável $pdo que irá armazenar a conexão com o banco de dados
@@ -26,28 +27,24 @@ class LoginController {
 
             // Verifica se o usuário ou a senha não corresponde com a do banco de dados
             if (!$usuario || !password_verify($senha, $usuario['senha'])) {
-                echo "Email ou senha incorretos.";
-                exit();
+                redirect_with_alert('Email ou senha incorretos.', '../../frontend/pages/login.html');
             }
             
             // Verifica se o campo 'nome' está presente e não é nulo
             // Adicionei essa verificação por conta de um bug que não consegui encontrar o nome do user da session
             if (!isset($usuario['nome']) || empty($usuario['nome'])) {
-                echo "Erro: Nome do usuário não encontrado ou está vazio no banco de dados.";
-                exit();
+                redirect_with_alert('Erro: Nome do usuário não encontrado ou está vazio no banco de dados.', '../../frontend/pages/login.html');
             }
 
             // Inicia a sessão apenas se não estiver ativa
-            if (session_status() == PHP_SESSION_NONE) {
-                session_start();
-            }
+            iniciar_sessao();
             
             $_SESSION['user_id'] = $usuario['id']; // Salva o ID do usuário na sessão 
             $_SESSION['user_name'] = $usuario['nome']; // Salva o nome do usuário na sessão
             header('Location: ../../frontend/pages/home.php'); // Redireciona para 'home.php'
             exit(); 
         } catch (PDOException $e) {
-            echo "Erro ao tentar logar: ". $e->getMessage();
+            redirect_with_alert('Erro ao tentar logar:' . addslashes($e->getMessage()), '../../frontend/pages/login.html');
         }
     }
 }

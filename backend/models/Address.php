@@ -1,4 +1,7 @@
 <?php
+// Incluir o arquivo utils.php
+include_once '../../backend/utils.php'; 
+
 // Classe responsável pelas operações relacionadas a endereços (criação e vinculação ao usuário)
 class Address {
     private $pdo; // Armazena a instância de PDO para comunicação com o banco de dados
@@ -27,8 +30,8 @@ class Address {
             // Retorna o ID do endereço recém-criado, gerado automaticamente pelo banco
             return $this->pdo->lastInsertId();
         } catch (PDOException $e) {
-            // Se ocorrer algum erro, lança uma exceção com a mensagem do erro
-            throw new Exception("Erro ao registrar o endereço: " . $e->getMessage());
+            // Exibe um alerta com a mensagem do erro
+            alert_message("Erro ao registrar o endereço: " . $e->getMessage());
         }
     }
 
@@ -43,26 +46,31 @@ class Address {
                 ':address_id' => $address_id
             ]);
         } catch (PDOException $e) {
-            // Se ocorrer algum erro, lança uma exceção com a mensagem do erro
-            throw new Exception("Erro ao vincular o endereço ao usuário: " . $e->getMessage());
+            // Exibe um alerta com a mensagem do erro
+            alert_message("Erro ao vincular o endereço ao usuário: " . $e->getMessage());
         }
     }
 
     // Método responsável por obter os endereços de um usuário específico
     public function get_addresses_by_user_id($user_id) {
-        // SQL com os ajustes feitos para refletir as mudanças
-        $sql = "SELECT address.* 
-                FROM address
-                INNER JOIN user_address ON address.id = user_address.address_id
-                WHERE user_address.user_id = :user_id";
-    
-        // Preparando e executando a consulta
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
-        $stmt->execute();
-    
-        // Retorna todos os endereços associados ao usuário
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        try {
+            // SQL com os ajustes feitos para refletir as mudanças
+            $sql = "SELECT address.* 
+                    FROM address
+                    INNER JOIN user_address ON address.id = user_address.address_id
+                    WHERE user_address.user_id = :user_id";
+        
+            // Preparando e executando a consulta
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+            $stmt->execute();
+        
+            // Retorna todos os endereços associados ao usuário
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            // Exibe um alerta com a mensagem do erro
+            alert_message("Erro ao buscar os endereços do usuário: " . $e->getMessage());
+        }
     }
 }
 ?>

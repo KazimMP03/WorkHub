@@ -44,32 +44,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Se não houve alteração e a foto não foi enviada, exibe uma mensagem
     if (!$alterado && (!isset($foto) || $foto['error'] !== UPLOAD_ERR_OK)) {
-        echo "Nenhuma alteração detectada. Os dados atuais serão mantidos.";
-        return;
+        redirect_with_alert('Nenhuma alteração detectada. Os dados atuais serão mantidos.', '../../frontend/views/list_profile.php');
     }    
 
     // Tenta atualizar o perfil do usuário
     try {
         $user_controller->edit_profile($_SESSION['user_id'], $dados, $foto);
-        echo "Perfil atualizado com sucesso!";
-        header('Location: ../../frontend/views/list_profile.php'); // Redireciona para a página de perfil
+        redirect_with_alert('Perfil atualizado com sucesso!', '../../frontend/views/list_profile.php');
     } catch (Exception $e) {
-        throw new Exception("Erro ao atualizar o perfil: " . $e->getMessage());
+        redirect_with_alert('Erro ao atualizar o perfil:' . addslashes($e->getMessage()), '../../frontend/views/list_profile.php');
     }
 }
 
-// Função para formatar o telefone com máscara (XX) XXXXX-XXXX
-function formatar_telefone($telefone) {
-    // Remove caracteres não numéricos
-    $telefone = preg_replace('/[^0-9]/', '', $telefone);
-    
-    // Verifica se o número tem 11 dígitos (como no exemplo: 11940385156)
-    if (strlen($telefone) == 11) { // Se o número tiver 11 dígitos...
-        // Adiciona a máscara (XX) XXXXX-XXXX
-        $telefone_formatado = '(' . substr($telefone, 0, 2) . ') ' . substr($telefone, 2, 5) . '-' . substr($telefone, 7, 4);
-        return $telefone_formatado; // Retorna o número sem formatação se não tiver 11 dígitos
-    }
-}
 ?>
 
 <!DOCTYPE html>

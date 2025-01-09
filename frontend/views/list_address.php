@@ -20,7 +20,7 @@ try {
     // Busca os endereços do usuário logado
     $addresses = $address_model->get_addresses_by_user_id($user_id);
 } catch (Exception $e) {
-    die("Erro ao carregar endereços: " . $e->getMessage());
+    alert_message('Erro ao carregar endereços: ' . $e->getMessage());
 }
 ?>
 
