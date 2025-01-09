@@ -1,37 +1,40 @@
 <?php
-// Inicia a sessão e verifica se o usuário está logado
-session_start();
-if (!isset($_SESSION['user_id'])) {
-    header('Location: login.html');
-    exit();
-}
+session_start(); // Inicia a sessão
 
+// Inclui o arquivo de funções utilitárias
+require_once '../../backend/utils.php';
+
+// Chama a função para verificar se o usuário está logado
+verificar_login();
+
+// Inclui os arquivos para conexão do banco e controle de usuário
 require_once '../../backend/config/database.php';
 require_once '../../backend/controllers/user_controller.php';
 
-$userController = new UserController($pdo);
+$user_controller = new UserController($pdo); // Cria o controlador de usuário
 
-// Carrega os dados do usuário
 $query = "SELECT * FROM users WHERE id = :id";
-$stmt = $pdo->prepare($query);
-$stmt->execute([':id' => $_SESSION['user_id']]);
-$userData = $stmt->fetch(PDO::FETCH_ASSOC);
+$stmt = $pdo->prepare($query); // Prepara a consulta para pegar os dados do usuário
+$stmt->execute([':id' => $_SESSION['user_id']]); // Executa a consulta usando o ID do usuário
+$userData = $stmt->fetch(PDO::FETCH_ASSOC); // Armazena os dados do usuário
 
+// Se o formulário for enviado...
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Recebe os dados do formulário
+    // Recebe os dados do formulário para atualização
     $dados = [
         'nome' => $_POST['nome_completo'],
         'email' => $_POST['email'],
         'telefone' => $_POST['telefone'],
         'sexo' => $_POST['sexo'],
-        // Outros campos que você permitir editar
+        // Novos campos, caso, queriamos mudar
     ];
 
-    // Recebe a foto, caso tenha sido enviada
+    // Recebe a foto, se enviada
     $foto = isset($_FILES['foto']) ? $_FILES['foto'] : null;
 
     $alterado = false;
 
+    // Verifica se houve alteração nos dados
     foreach ($dados as $campo => $value) {
         if ($value != $userData[$campo]) {
             $alterado = true;
@@ -39,36 +42,33 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
     }
 
+    // Se não houve alteração e a foto não foi enviada, exibe uma mensagem
     if (!$alterado && (!isset($foto) || $foto['error'] !== UPLOAD_ERR_OK)) {
         echo "Nenhuma alteração detectada. Os dados atuais serão mantidos.";
         return;
     }    
 
-    // Edita o perfil
+    // Tenta atualizar o perfil do usuário
     try {
-        $userController->edit_profile($_SESSION['user_id'], $dados, $foto);
+        $user_controller->edit_profile($_SESSION['user_id'], $dados, $foto);
         echo "Perfil atualizado com sucesso!";
-        header('Location: ../../frontend/views/list_profile.php');
+        header('Location: ../../frontend/views/list_profile.php'); // Redireciona para a página de perfil
     } catch (Exception $e) {
         throw new Exception("Erro ao atualizar o perfil: " . $e->getMessage());
     }
 }
 
-// Função para formatar o número de telefone
-// Necessário para aplicar a máscara para exibir para o usuário
+// Função para formatar o telefone com máscara (XX) XXXXX-XXXX
 function formatar_telefone($telefone) {
-    // Remove todos os caracteres não numéricos
+    // Remove caracteres não numéricos
     $telefone = preg_replace('/[^0-9]/', '', $telefone);
     
     // Verifica se o número tem 11 dígitos (como no exemplo: 11940385156)
-    if (strlen($telefone) == 11) {
+    if (strlen($telefone) == 11) { // Se o número tiver 11 dígitos...
         // Adiciona a máscara (XX) XXXXX-XXXX
-        $telefoneFormatado = '(' . substr($telefone, 0, 2) . ') ' . substr($telefone, 2, 5) . '-' . substr($telefone, 7, 4);
-        return $telefoneFormatado;
+        $telefone_formatado = '(' . substr($telefone, 0, 2) . ') ' . substr($telefone, 2, 5) . '-' . substr($telefone, 7, 4);
+        return $telefone_formatado; // Retorna o número sem formatação se não tiver 11 dígitos
     }
-    
-    // Se o número não tiver 11 dígitos, retorna o número sem máscara (você pode modificar isso conforme necessidade)
-    return $telefone;
 }
 ?>
 
@@ -133,10 +133,12 @@ function formatar_telefone($telefone) {
                     <option value="outro" <?php echo $userData['sexo'] == 'outro' ? 'selected' : ''; ?>>Outro</option>
                 </select>
                 
+                <!-- Botão para salvar as alterações -->
                 <button type="submit">Salvar Alterações</button>
             </form>
         </div>
     </div>
+    <!-- Script para upload de foto -->
     <script src="../../frontend/js/upload_foto.js"></script>
 </body>
 </html>

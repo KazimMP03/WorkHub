@@ -1,10 +1,9 @@
 <?php
-// Verifica se o usuário está logado (se 'user_name' ou 'user_id' não estiverem definidos)
-if (!isset($_SESSION['user_name']) || !isset($_SESSION['user_id'])) {
-    // Se não estiver, redireciona para página de login
-    header('Location: ../../frontend/pages/login.html');
-    exit();
-}
+// Inclui o arquivo de funções utilitárias
+require_once '../../backend/utils.php';
+
+// Chama a função para verificar se o usuário está logado
+verificar_login();
 
 // Busca o primeiro nome do usuário
 $nome_completo = $_SESSION['user_name'];
@@ -25,7 +24,7 @@ $foto_perfil_path = $foto_perfil ? "../../uploads/{$foto_perfil}" : "../../front
 <head>
     <!-- Link para os ícones -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="../../frontend/css/header.css">
+    <link rel="stylesheet" href="../../frontend/assets/css/header.css">
     <header class="header">
         <!-- Logo -->
         <div class="logo">

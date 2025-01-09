@@ -1,11 +1,11 @@
 <?php
 session_start(); // Inicia a sessão
 
-// Verifica se o usuário está logado
-if (!isset($_SESSION['user_id'])) {
-    header('Location: ../../frontend/pages/login.html');
-    exit();
-}
+// Inclui o arquivo de funções utilitárias
+require_once '../../backend/utils.php';
+
+// Chama a função para verificar se o usuário está logado
+verificar_login();
 
 // Inclui a conexão com o banco de dados e o modelo Address
 require_once '../../backend/config/database.php';
